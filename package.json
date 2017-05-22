@@ -1,7 +1,7 @@
 {
   "name": "lucozade-energy-to-do-campaign",
   "version": "1.0.0",
-  "description": "",
+  "description": "lucozade-energy-to-do-campaign",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "animsition": "^4.0.2",
     "bootstrap": "^4.0.0-alpha.6",
     "dom-to-image": "^2.5.2"
   },
