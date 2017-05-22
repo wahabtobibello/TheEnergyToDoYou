@@ -1,0 +1,83 @@
+@font-face {
+    font-family: AvenyT-Black;
+    src: url("../fonts/Aveny-T_Black.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Aveny T;
+    src: url("../fonts/Aveny-T_Regular.otf") format("opentype");
+}
+
+.header {
+    display: table;
+    margin: auto;
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(circle at 50% 300%, #f2d712 80%, transparent 100%), url("../img/water-drops.jpg");
+    background-size: auto, cover;
+    background-position: top;
+}
+.landing{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.landing svg {
+    width: 60%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.landing form {
+    width: 60%;
+    margin: auto;
+    position: relative;
+}
+.landing #input-action {
+    color: #d80b2c;
+    background: transparent;
+    border: 0 none;
+    outline: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    text-align: center;
+    font-size: 16vw;
+    font-family: AvenyT-Black, Aveny T, sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+.gallery{
+    width: 100%;
+}
+.gallery ul{
+    padding: 0;
+    margin: 0;
+}
+.gallery li{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.gallery img{
+    width: 100%;
+    overflow: hidden;
+}
+@media all and (min-width: 768px) {
+    .header svg {
+        width: 30%;
+    }
+
+    .header form {
+        width: 30%;
+        margin: auto;
+    }
+    .header #input-action {
+        font-size: 8.1vw
+    }
+}
