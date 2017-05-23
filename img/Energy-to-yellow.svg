@@ -11,7 +11,7 @@
       }
       .cls-1 {
         fill: #f8d60c;
-        stroke: #f5d313;
+        stroke: #f8d60c;
       }
 
       .cls-2, .cls-4 {
@@ -20,11 +20,11 @@
       }
 
       .cls-2 {
-        stroke: #f2d712;
+        stroke: #f8d60c;
       }
 
       .cls-3 {
-        fill: #f2d712;
+        fill: #f8d60c;
         font-size: 56px;
         font-family: AvenyT-Black, Aveny T, sans-serif;
         font-weight: 800;
@@ -32,7 +32,7 @@
       }
 
       .cls-4 {
-        stroke: #f6d413;
+        stroke: #f8d60c;
       }
 
       .cls-5 {
@@ -41,6 +41,13 @@
 
       .cls-6 {
         fill: none;
+      }
+      .cls-7{
+      display: block;
+      text-align: center;
+      text-transform: uppercase;
+      color: #f8d60c;
+      line-height: 1.3;
       }
     </style>
   </defs>
@@ -55,6 +62,8 @@
       <rect class="cls-5" width="199" height="66.985"/>
       <rect class="cls-6" x="2.5" y="2.5" width="194" height="61.985"/>
     </g>
-    <text id="CODE" class="cls-3" transform="translate(496 309)"><tspan x="0" y="0">CODE</tspan></text>
+    <foreignObject class="cls-3 cls-7"  width="199" height="66.985">
+      <div xmlns="http://www.w3.org/1999/xhtml" id="action" style="border: 0;outline: 0;" contenteditable="true"></div>
+    </foreignObject>
   </g>
 </svg>
