@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f9dbeea7-545b-4bf1-87b3-1500f59eb7ee" name="Default" comment="improved implementation of text area on print">
+    <list default="true" id="f9dbeea7-545b-4bf1-87b3-1500f59eb7ee" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/styles.css" afterPath="$PROJECT_DIR$/css/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/index.js" afterPath="$PROJECT_DIR$/js/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -390,7 +387,7 @@
       <workItem from="1496221414561" duration="29705000" />
       <workItem from="1496302360773" duration="35774000" />
       <workItem from="1496388231777" duration="11019000" />
-      <workItem from="1496403498485" duration="7202000" />
+      <workItem from="1496403498485" duration="7265000" />
     </task>
     <task id="LOCAL-00001" summary="add gitignore file">
       <created>1495454287675</created>
@@ -539,11 +536,18 @@
       <option name="project" value="LOCAL" />
       <updated>1496413355707</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="changed svg graphic to main">
+      <created>1496413458401</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1496413458401</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="228373000" />
+    <option name="totallyTimeSpent" value="228436000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1382" height="754" extended-state="6" />
@@ -614,7 +618,8 @@
     <MESSAGE value="update style to work with new implementation" />
     <MESSAGE value="better svg imaging" />
     <MESSAGE value="added main svg graphic" />
-    <option name="LAST_COMMIT_MESSAGE" value="added main svg graphic" />
+    <MESSAGE value="changed svg graphic to main" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed svg graphic to main" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -767,6 +772,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="28" lean-forward="false" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
