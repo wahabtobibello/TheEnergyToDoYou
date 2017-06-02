@@ -10,6 +10,5 @@ $('.header form').submit(e => {
         .then((dataUrl) => {
             btnSave.download = 'my-image-name.jpeg';
             btnSave.href = dataUrl;
-            btnSave.href = "l";
         });
 });
