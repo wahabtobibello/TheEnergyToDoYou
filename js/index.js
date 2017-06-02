@@ -161,7 +161,7 @@
     });
     canvas.renderAll();
     let createSvg = new Promise((resolve, reject) => {
-        fabric.loadSVGFromURL('img/Group 13.svg', function (objects, options) {
+        fabric.loadSVGFromURL('img/Energy-to-red.svg', function (objects, options) {
             let energyTo = fabric.util.groupSVGElements(objects, options);
             energyTo.selectable = false;
             energyTo.evented = false;
