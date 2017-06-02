@@ -175,7 +175,7 @@
     createSvg.then((energyTo) => {
         let action = new fabric.Textbox("", {
             fontFamily: "AvenyT-Black",
-            fontSize: 125,
+            fontSize: 110,
             textAlign: "center",
             top: canvas.height * 2 / 2.95,
             left: canvas.width / 1.85,
@@ -263,7 +263,7 @@
             duration: 700,
             onChange: canvas.renderAll.bind(canvas),
             ease: "easeOutSine"
-        }).animate("top", canvas.height * 2 / 3.225, {
+        }).animate("top", canvas.height * 2 / 3.4, {
             duration: 700,
             onChange: canvas.renderAll.bind(canvas),
             ease: "easeOutSine"
