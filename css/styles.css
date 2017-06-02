@@ -1,7 +1,11 @@
 * {
     box-sizing: border-box;
 }
-
+.lucozade-red{
+    color: #fff;
+    background-color: #d80b2c;
+    border-color: #d80b2c;
+}
 @font-face {
     font-family: AvenyT-Black;
     src: url("../fonts/Aveny-T_Black.otf") format("opentype");

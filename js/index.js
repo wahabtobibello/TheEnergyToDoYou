@@ -125,7 +125,7 @@
 // }
 
 (function () {
-    const maxchars = 7;
+    const maxchars = 10;
     const $addPhotoOnly = $('#addPhotoOnly');
     const $moreOptions = $('#moreOptions');
     const $saveLink = $('#saveLink');
@@ -150,7 +150,7 @@
         };
     };
     const convertCanvasToImage = canvas => {
-        var image = new Image();
+        let image = new Image();
         image.src = canvas.toDataURL("image/png");
         return image;
     };
@@ -161,7 +161,7 @@
     });
     canvas.renderAll();
     let createSvg = new Promise((resolve, reject) => {
-        fabric.loadSVGFromURL('img/Energy-to-red.svg', function (objects, options) {
+        fabric.loadSVGFromURL('img/the-energy-to.svg', function (objects, options) {
             let energyTo = fabric.util.groupSVGElements(objects, options);
             energyTo.selectable = false;
             energyTo.evented = false;
@@ -175,21 +175,22 @@
     createSvg.then((energyTo) => {
         let action = new fabric.Textbox("", {
             fontFamily: "AvenyT-Black",
-            fontSize: 56,
+            fontSize: 125,
             textAlign: "center",
-            top: canvas.height * 2 / 3,
-            left: canvas.width / 2,
+            top: canvas.height * 2 / 2.95,
+            left: canvas.width / 1.85,
             fill: "#d80b2c",
             originX: "center",
+            originY: "center",
             width: 169,
             cursorColor: "#d80b2c",
             cursorWidth: 5,
             evented: false,
-            hasControls: false
+            hasControls: false,
+            skewY: -10
         });
         energyTo.scaleToHeight(canvas.height);
         energyTo.scaleToWidth(canvas.width);
-        action.scaleToHeight(canvas.height / 3);
         canvas.add(energyTo);
         canvas.add(action);
         canvas.setActiveObject(action);
@@ -258,16 +259,19 @@
             onChange: canvas.renderAll.bind(canvas),
             ease: "easeOutSine"
         });
-        action.animate("scaleX", action.scaleX / 2, {
+        action.animate("scaleX", action.scaleX / 1.5, {
             duration: 700,
             onChange: canvas.renderAll.bind(canvas),
             ease: "easeOutSine"
-        }).animate("top", canvas.height * 2 / 3.45, {
+        }).animate("top", canvas.height * 2 / 3.225, {
             duration: 700,
             onChange: canvas.renderAll.bind(canvas),
             ease: "easeOutSine"
-        });
-        action.animate("scaleY", action.scaleY / 2, {
+        }).animate("left", canvas.width / 1.9, {
+            duration: 700,
+            onChange: canvas.renderAll.bind(canvas),
+            ease: "easeOutSine"
+        }).animate("scaleY", action.scaleY / 1.5, {
             duration: 700,
             onChange: canvas.renderAll.bind(canvas),
             ease: "easeOutSine"

@@ -20,13 +20,13 @@
             <div id="controls">
                 <input type="file" style="display:none" id="fileInput">
                 <div id="addPhotoOnly" style="display:none">
-                    <button onclick="initFileButtons()" class="btn btn-danger">Add Photo</button>
+                    <button onclick="initFileButtons()" class="btn lucozade-red">Add Photo</button>
                 </div>
                 <div id="moreOptions" style="display:none">
-                    <button onclick="initFileButtons()" class="btn btn-danger">Change Photo
+                    <button onclick="initFileButtons()" class="btn lucozade-red">Change Photo
                     </button>
                     <a id="saveLink" download>
-                        <button class="btn btn-danger" id="saveLinkBtn">Save</button>
+                        <button class="btn lucozade-red" id="saveLinkBtn">Save</button>
                     </a>
                 </div>
             </div>
@@ -48,6 +48,7 @@
         crossorigin="anonymous"></script>
 <script>
     const initFileButtons = () => $('#fileInput').click();
+    $(window).trigger('resize');
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
         integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
