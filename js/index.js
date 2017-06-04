@@ -130,32 +130,12 @@
     const $moreOptions = $('#moreOptions');
     const $saveLink = $('#saveLink');
     const $saveLinkBtn = $('#saveLinkBtn');
-    const initTextarea = (textArea) => {
-        textArea.maxLength = maxchars;
-        textArea.focus();
-        textArea.cols = 1;
-        textArea.onkeyup = (e) => {
-            if ($moreOptions.css('display') === "none") {
-                $addPhotoOnly.show();
-                if (e.target.value === "")
-                    $addPhotoOnly.find('button').attr('disabled', 'true');
-                else
-                    $addPhotoOnly.find('button').removeAttr('disabled');
-            } else {
-                if (e.target.value === "")
-                    $moreOptions.find('button').attr('disabled', 'true');
-                else
-                    $moreOptions.find('button').removeAttr('disabled');
-            }
-        };
-    };
     const convertCanvasToImage = canvas => {
         let image = new Image();
         image.src = canvas.toDataURL("image/png");
         return image;
     };
     let canvas = new fabric.Canvas('image-canvas', {
-        defaultCursor: "text",
         width: 846,
         height: 846
     });
@@ -169,20 +149,21 @@
             energyTo.left = canvas.width / 2;
             energyTo.originX = "center";
             energyTo.originY = "center";
+            energyTo.hasControls = false;
+            energyTo.hasRotatingPoint = false;
+            energyTo.hasBorders = false;
             resolve(energyTo);
         });
     });
     createSvg.then((energyTo) => {
         let action = new fabric.Textbox("", {
             fontFamily: "AvenyT-Black",
-            fontSize: 110,
             textAlign: "center",
             top: canvas.height * 2 / 2.95,
             left: canvas.width / 1.85,
             fill: "#d80b2c",
             originX: "center",
             originY: "center",
-            width: 169,
             cursorColor: "#d80b2c",
             cursorWidth: 5,
             evented: false,
@@ -191,22 +172,63 @@
         });
         energyTo.scaleToHeight(canvas.height);
         energyTo.scaleToWidth(canvas.width);
+        action.scaleToHeight(canvas.height / 6);
         canvas.add(energyTo);
         canvas.add(action);
-        canvas.setActiveObject(action);
         action.enterEditing();
         action.hasBorders = false;
         action.hasControls = false;
         action.hasRotatingPoint = false;
-        initTextarea(action.hiddenTextarea);
+        canvas.setActiveObject(action);
+        action.hiddenTextarea.maxLength = maxchars;
+        action.hiddenTextarea.focus();
+        action.hiddenTextarea.cols = 1;
+        action.hiddenTextarea.onkeyup = (e) => {
+            if ($moreOptions.css('display') === "none") {
+                $addPhotoOnly.show();
+                if (e.target.value === "")
+                    $addPhotoOnly.find('button').attr('disabled', 'true');
+                else
+                    $addPhotoOnly.find('button').removeAttr('disabled');
+            } else {
+                if (e.target.value === "")
+                    $moreOptions.find('button').attr('disabled', 'true');
+                else
+                    $moreOptions.find('button').removeAttr('disabled');
+            }
+        };
         canvas.renderAll();
     });
     canvas.on('mouse:down', (e) => {
-        let action = canvas.item(1);
-        canvas.setActiveObject(action);
-        action.enterEditing();
-        action.initHiddenTextarea()
-        initTextarea(action.hiddenTextarea);
+        let image = canvas.item(0);
+        let notImage = canvas.item(1);
+        canvas.setActiveObject(notImage);
+        canvas.renderAll();
+    });
+    canvas.on('mouse:up', (e) => {
+        var activeObject = e.target;
+        let tlX = activeObject.aCoords.tl.x;
+        let tlY = activeObject.aCoords.tl.y;
+        let brX = activeObject.aCoords.br.x;
+        let brY = activeObject.aCoords.br.y;
+        let canvasWidth = canvas.width;
+        let canvasHeight = canvas.height;
+        let currentWidth = activeObject.width * activeObject.scaleX;
+        let currentHeight = activeObject.height * activeObject.scaleY;
+        if (tlX > 0) {
+            activeObject.setLeft(currentWidth / 2);
+        }
+        if(tlY > 0){
+            activeObject.setTop(currentHeight / 2);
+        }
+        if (brX < canvasWidth) {
+            activeObject.setLeft(canvasWidth - (currentWidth / 2));
+        }
+        if(brY < canvasHeight){
+            activeObject.setTop(canvasHeight - (currentHeight / 2));
+        }
+        let notImage = canvas.item(1);
+        canvas.setActiveObject(notImage);
         canvas.renderAll();
     });
     let createImage = new Promise((resolve, reject) => {
@@ -225,6 +247,8 @@
                     hasBorders: false,
                     originX: "center",
                     originY: "center",
+                    left: canvas.width / 2,
+                    top: canvas.height / 2
                 });
                 let imageObj = canvas.item(0);
                 if (imageObj && imageObj.type === "image")
@@ -237,8 +261,6 @@
                 else if (backImage.width > backImage.height) {
                     backImage.scaleToHeight(backImage.canvas.height);
                 }
-                backImage.setLeft(backImage.canvas.width / 2);
-                backImage.setTop(backImage.canvas.height / 2);
                 canvas.renderAll();
                 resolve(canvas);
             };
@@ -249,21 +271,21 @@
         let energyTo = canvas.item(1);
         let action = canvas.item(2);
         action.exitEditing();
-        energyTo.animate("scaleX", energyTo.scaleX / 2, {
+        energyTo.animate("scaleX", energyTo.scaleX / 1.5, {
             duration: 700,
             onChange: canvas.renderAll.bind(canvas),
             ease: "easeOutSine"
         });
-        energyTo.animate("scaleY", energyTo.scaleY / 2, {
+        energyTo.animate("scaleY", energyTo.scaleY / 1.5, {
             duration: 700,
             onChange: canvas.renderAll.bind(canvas),
             ease: "easeOutSine"
         });
-        action.animate("scaleX", action.scaleX / 1.5, {
+        action.animate("scaleX", action.scaleX / 1.2, {
             duration: 700,
             onChange: canvas.renderAll.bind(canvas),
             ease: "easeOutSine"
-        }).animate("top", canvas.height * 2 / 3.4, {
+        }).animate("top", canvas.height * 2 / 3.2, {
             duration: 700,
             onChange: canvas.renderAll.bind(canvas),
             ease: "easeOutSine"
@@ -271,7 +293,7 @@
             duration: 700,
             onChange: canvas.renderAll.bind(canvas),
             ease: "easeOutSine"
-        }).animate("scaleY", action.scaleY / 1.5, {
+        }).animate("scaleY", action.scaleY / 1.2, {
             duration: 700,
             onChange: canvas.renderAll.bind(canvas),
             ease: "easeOutSine"
@@ -285,20 +307,4 @@
         $saveLink.attr('download', 'image.jpeg');
         $saveLink.click();
     });
-//    imageCanvas.on("mouse:up", (e) => {
-//        var activeObject = e.target;
-//        let blX = activeObject.aCoords.bl.x;
-//        let tlX = activeObject.aCoords.tl.x;
-//        let brX = activeObject.aCoords.br.x;
-//        let trX = activeObject.aCoords.tr.x;
-//        let blY = activeObject.aCoords.bl.y;
-//        let tlY = activeObject.aCoords.tl.y;
-//        let brY = activeObject.aCoords.br.y;
-//        let trY = activeObject.aCoords.tr.y;
-//        let cw = printCanvas.width
-//        let ch = printCanvas.height
-//        if (tlX > 0) {
-//            activeObject.setLeft(0);
-//        }
-//    })
 }());
