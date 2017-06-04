@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -20,13 +21,15 @@
             <div id="controls">
                 <input type="file" style="display:none" id="fileInput">
                 <div id="addPhotoOnly" style="display:none">
-                    <button onclick="initFileButtons()" class="btn lucozade-red">Add Photo</button>
+                    <button onclick="initFileButtons()" class="btn lucozade-red"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add Photo</button>
                 </div>
                 <div id="moreOptions" style="display:none">
-                    <button onclick="initFileButtons()" class="btn lucozade-red">Change Photo
+                    <button onclick="initFileButtons()" class="btn lucozade-red"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Change Photo
+                    </button>
+                    <button onclick="initFileButtons()" class="btn lucozade-red"><i class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Share
                     </button>
                     <a id="saveLink" download>
-                        <button class="btn lucozade-red" id="saveLinkBtn">Save</button>
+                        <button class="btn lucozade-red" id="saveLinkBtn"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Save</button>
                     </a>
                 </div>
             </div>
