@@ -76,7 +76,7 @@ body, button {
     transform: scale(.5,.5);
 }
 
-textarea{
+body > textarea{
     left: 0!important;
 }
 
