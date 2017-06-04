@@ -139,6 +139,28 @@
         width: 846,
         height: 846
     });
+    const initializeTextbox = (textbox) => {
+        canvas.setActiveObject(textbox);
+        textbox.enterEditing();
+        textbox.hiddenTextarea.maxLength = maxchars;
+        textbox.hiddenTextarea.focus();
+        textbox.hiddenTextarea.onkeyup = (e) => {
+            if ($moreOptions.css('display') === "none") {
+                $addPhotoOnly.show();
+                if (e.target.value === "")
+                    $addPhotoOnly.find('button').attr('disabled', 'true');
+                else {
+                    $addPhotoOnly.find('button').removeAttr('disabled');
+                }
+            } else {
+                if (e.target.value === "")
+                    $moreOptions.find('button').attr('disabled', 'true');
+                else {
+                    $moreOptions.find('button').removeAttr('disabled');
+                }
+            }
+        };
+    }
     canvas.renderAll();
     let createSvg = new Promise((resolve, reject) => {
         fabric.loadSVGFromURL('img/the-energy-to.svg', function (objects, options) {
@@ -156,7 +178,7 @@
         });
     });
     createSvg.then((energyTo) => {
-        let action = new fabric.Textbox("", {
+        let textbox = new fabric.Textbox("", {
             fontFamily: "AvenyT-Black",
             textAlign: "center",
             top: canvas.height * 2 / 2.95,
@@ -172,63 +194,48 @@
         });
         energyTo.scaleToHeight(canvas.height);
         energyTo.scaleToWidth(canvas.width);
-        action.scaleToHeight(canvas.height / 6);
+        textbox.scaleToHeight(canvas.height / 6);
         canvas.add(energyTo);
-        canvas.add(action);
-        action.enterEditing();
-        action.hasBorders = false;
-        action.hasControls = false;
-        action.hasRotatingPoint = false;
-        canvas.setActiveObject(action);
-        action.hiddenTextarea.maxLength = maxchars;
-        action.hiddenTextarea.focus();
-        action.hiddenTextarea.cols = 1;
-        action.hiddenTextarea.onkeyup = (e) => {
-            if ($moreOptions.css('display') === "none") {
-                $addPhotoOnly.show();
-                if (e.target.value === "")
-                    $addPhotoOnly.find('button').attr('disabled', 'true');
-                else
-                    $addPhotoOnly.find('button').removeAttr('disabled');
-            } else {
-                if (e.target.value === "")
-                    $moreOptions.find('button').attr('disabled', 'true');
-                else
-                    $moreOptions.find('button').removeAttr('disabled');
-            }
-        };
+        canvas.add(textbox);
+        textbox.hasBorders = false;
+        textbox.hasControls = false;
+        textbox.hasRotatingPoint = false;
+        initializeTextbox(textbox);
         canvas.renderAll();
     });
     canvas.on('mouse:down', (e) => {
-        let image = canvas.item(0);
-        let notImage = canvas.item(1);
-        canvas.setActiveObject(notImage);
+        for(let i = 0; i < canvas.size(); i++ ){
+            if(canvas.item(i).type === "textbox"){
+                initializeTextbox(canvas.item(i));
+                break;
+            }
+        }
         canvas.renderAll();
     });
     canvas.on('mouse:up', (e) => {
         var activeObject = e.target;
-        let tlX = activeObject.aCoords.tl.x;
-        let tlY = activeObject.aCoords.tl.y;
-        let brX = activeObject.aCoords.br.x;
-        let brY = activeObject.aCoords.br.y;
-        let canvasWidth = canvas.width;
-        let canvasHeight = canvas.height;
-        let currentWidth = activeObject.width * activeObject.scaleX;
-        let currentHeight = activeObject.height * activeObject.scaleY;
-        if (tlX > 0) {
-            activeObject.setLeft(currentWidth / 2);
+        if (activeObject && activeObject.type === "image") {
+            let tlX = activeObject.aCoords.tl.x;
+            let tlY = activeObject.aCoords.tl.y;
+            let brX = activeObject.aCoords.br.x;
+            let brY = activeObject.aCoords.br.y;
+            let canvasWidth = canvas.width;
+            let canvasHeight = canvas.height;
+            let currentWidth = activeObject.width * activeObject.scaleX;
+            let currentHeight = activeObject.height * activeObject.scaleY;
+            if (tlX > 0) {
+                activeObject.setLeft(currentWidth / 2);
+            }
+            if (tlY > 0) {
+                activeObject.setTop(currentHeight / 2);
+            }
+            if (brX < canvasWidth) {
+                activeObject.setLeft(canvasWidth - (currentWidth / 2));
+            }
+            if (brY < canvasHeight) {
+                activeObject.setTop(canvasHeight - (currentHeight / 2));
+            }
         }
-        if(tlY > 0){
-            activeObject.setTop(currentHeight / 2);
-        }
-        if (brX < canvasWidth) {
-            activeObject.setLeft(canvasWidth - (currentWidth / 2));
-        }
-        if(brY < canvasHeight){
-            activeObject.setTop(canvasHeight - (currentHeight / 2));
-        }
-        let notImage = canvas.item(1);
-        canvas.setActiveObject(notImage);
         canvas.renderAll();
     });
     let createImage = new Promise((resolve, reject) => {
