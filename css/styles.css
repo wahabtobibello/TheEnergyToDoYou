@@ -3,8 +3,8 @@
 }
 .lucozade-red{
     color: #fff;
-    background-color: #d80b2c;
-    border-color: #d80b2c;
+    background-color: #E5003B;
+    border-color: #E5003B;
 }
 @font-face {
     font-family: AvenyT-Black;
@@ -68,6 +68,10 @@ body, button {
 #addPhotoOnly button{
     width: 433px;
 }
+
+#moreOptions button{
+    width: calc(433px / 3);
+}
 #canvas-outer .canvas-container {
     -webkit-transform-origin: top left;
     -ms-transform-origin: top left;
@@ -89,6 +93,9 @@ body > textarea{
     #addPhotoOnly button{
         width: 263.79999999999995px;
     }
+    #moreOptions button{
+        width: calc(263.79999999999995px / 3);
+    }
     #canvas-outer .canvas-container {
         -webkit-transform-origin: top left;
         -ms-transform-origin: top left;
@@ -106,6 +113,9 @@ body > textarea{
     }
     #addPhotoOnly button{
         width: 306.09999999999997px;
+    }
+    #moreOptions button{
+        width: calc(306.09999999999997px / 3);
     }
     #canvas-outer .canvas-container {
         -webkit-transform-origin: top left;
