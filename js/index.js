@@ -270,7 +270,7 @@
                     canvas.remove(imageObj);
                 canvas.add(backImage)
                     .sendToBack(backImage);
-                if (backImage.width < backImage.height) {
+                if (backImage.width <= backImage.height) {
                     backImage.scaleToWidth(backImage.canvas.width);
                 }
                 else if (backImage.width > backImage.height) {
