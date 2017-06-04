@@ -76,6 +76,10 @@ body, button {
     transform: scale(.5,.5);
 }
 
+textarea{
+    left: 0!important;
+}
+
 @media (max-width: 340px) {
     #canvas-outer {
         width: 263.79999999999995px;
