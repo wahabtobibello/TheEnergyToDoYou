@@ -76,9 +76,6 @@ body, button {
     transform: scale(.5,.5);
 }
 
-textarea{
-    display: none;
-}
 @media (max-width: 340px) {
     #canvas-outer {
         width: 263.79999999999995px;
