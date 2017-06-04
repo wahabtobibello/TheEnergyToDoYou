@@ -21,16 +21,21 @@
             <div id="controls">
                 <input type="file" style="display:none" id="fileInput">
                 <div id="addPhotoOnly" style="display:none">
-                    <button onclick="initFileButtons()" class="btn lucozade-red"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add Photo</button>
+                    <button id="addPhoto" class="btn lucozade-red"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add
+                        Photo
+                    </button>
                 </div>
                 <div id="moreOptions" style="display:none">
-                    <button onclick="initFileButtons()" class="btn lucozade-red"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Change Photo
-                    </button>
                     <button class="btn lucozade-red"><i class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Share
                     </button>
                     <a id="saveLink" download>
-                        <button class="btn lucozade-red" id="saveLinkBtn"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Save</button>
+                        <button class="btn lucozade-red" id="saveLinkBtn"><i class="fa fa-download"
+                                                                             aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Save
+                        </button>
                     </a>
+                    <button id="startOver" class="btn lucozade-red"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Start
+                        Over
+                    </button>
                 </div>
             </div>
         </div>
@@ -49,9 +54,6 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
-<script>
-    const initFileButtons = () => $('#fileInput').click();
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
         integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
         crossorigin="anonymous"></script>
