@@ -75,6 +75,10 @@ body, button {
     -ms-transform: scale(.5,.5);
     transform: scale(.5,.5);
 }
+
+textarea{
+    display: none;
+}
 @media (max-width: 340px) {
     #canvas-outer {
         width: 263.79999999999995px;
@@ -83,7 +87,7 @@ body, button {
     #addPhotoOnly button{
         width: 263.79999999999995px;
     }
-    .canvas-container {
+    #canvas-outer .canvas-container {
         -webkit-transform-origin: top left;
         -ms-transform-origin: top left;
         transform-origin: top left;
@@ -101,7 +105,7 @@ body, button {
     #addPhotoOnly button{
         width: 306.09999999999997px;
     }
-    .canvas-container {
+    #canvas-outer .canvas-container {
         -webkit-transform-origin: top left;
         -ms-transform-origin: top left;
         transform-origin: top left;
