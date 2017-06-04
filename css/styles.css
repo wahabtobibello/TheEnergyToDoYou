@@ -65,6 +65,7 @@ body, button {
     -webkit-transition-delay: 0s;
     transition-delay: 0s;
 }
+
 #addPhotoOnly button{
     width: 433px;
 }
@@ -83,6 +84,7 @@ body, button {
 
 body > textarea{
     left: 0!important;
+    top: 0!important;
 }
 
 @media (max-width: 340px) {
@@ -90,6 +92,11 @@ body > textarea{
         width: 263.79999999999995px;
         height: 263.79999999999995px;
     }
+
+    .btn{
+        font-size: 0.6rem;
+    }
+
     #addPhotoOnly button{
         width: 263.79999999999995px;
     }
@@ -110,6 +117,10 @@ body > textarea{
     #canvas-outer {
         width: 306.09999999999997px;
         height: 306.09999999999997px;
+    }
+
+    .btn{
+        font-size: 0.7rem;
     }
     #addPhotoOnly button{
         width: 306.09999999999997px;
