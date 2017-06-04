@@ -143,8 +143,7 @@
         canvas.setActiveObject(textbox);
         textbox.enterEditing();
         textbox.hiddenTextarea.maxLength = maxchars;
-        textbox.hiddenTextarea.style.left = 0;
-        textbox.hiddenTextarea.style.top = 0;
+        textbox.hiddenTextarea.focus();
         textbox.hiddenTextarea.onkeyup = (e) => {
             if ($moreOptions.css('display') === "none") {
                 $addPhotoOnly.show();
@@ -182,8 +181,6 @@
         let textbox = new fabric.Textbox("", {
             fontFamily: "AvenyT-Black",
             textAlign: "center",
-            top: canvas.height * 2 / 2.95,
-            left: canvas.width / 1.85,
             fill: "#d80b2c",
             originX: "center",
             originY: "center",
@@ -191,6 +188,8 @@
             cursorWidth: 5,
             evented: false,
             hasControls: false,
+            hasRotatingPoint: false,
+            hasBorders: false,
             skewY: -10
         });
         energyTo.scaleToHeight(canvas.height);
@@ -198,9 +197,7 @@
         textbox.scaleToHeight(canvas.height / 6);
         canvas.add(energyTo);
         canvas.add(textbox);
-        textbox.hasBorders = false;
-        textbox.hasControls = false;
-        textbox.hasRotatingPoint = false;
+        canvas.centerObjectH(textbox);
         initializeTextbox(textbox);
         canvas.renderAll();
     });
@@ -237,7 +234,6 @@
                 activeObject.setTop(canvasHeight - (currentHeight / 2));
             }
         }
-        canvas.renderAll();
     });
     let createImage = new Promise((resolve, reject) => {
         $('#fileInput').change(function () {
