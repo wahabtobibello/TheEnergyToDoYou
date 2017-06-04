@@ -190,21 +190,24 @@
             hasControls: false,
             hasRotatingPoint: false,
             hasBorders: false,
-            skewY: -10
+            skewY: -10,
+            top: canvas.height * 2 / 2.95,
+            left: canvas.width / 1.85,
         });
         energyTo.scaleToHeight(canvas.height);
         energyTo.scaleToWidth(canvas.width);
         textbox.scaleToHeight(canvas.height / 6);
         canvas.add(energyTo);
         canvas.add(textbox);
-        canvas.centerObjectH(textbox);
+        canvas.centerObject(energyTo);
         initializeTextbox(textbox);
         canvas.renderAll();
     });
     canvas.on('mouse:down', (e) => {
         for(let i = 0; i < canvas.size(); i++ ){
-            if(canvas.item(i).type === "textbox"){
-                initializeTextbox(canvas.item(i));
+            var item = canvas.item(i);
+            if(item.type !== "image"){
+                canvas.setActiveObject(item);
                 break;
             }
         }
@@ -234,6 +237,14 @@
                 activeObject.setTop(canvasHeight - (currentHeight / 2));
             }
         }
+        for(let i = 0; i < canvas.size(); i++ ){
+            var item = canvas.item(i);
+            if(item.type === "textbox"){
+                initializeTextbox(item);
+                break;
+            }
+        }
+        canvas.renderAll();
     });
     let createImage = new Promise((resolve, reject) => {
         $('#fileInput').change(function () {
@@ -279,8 +290,7 @@
             duration: 700,
             onChange: canvas.renderAll.bind(canvas),
             ease: "easeOutSine"
-        });
-        energyTo.animate("scaleY", energyTo.scaleY / 1.5, {
+        }).animate("scaleY", energyTo.scaleY / 1.5, {
             duration: 700,
             onChange: canvas.renderAll.bind(canvas),
             ease: "easeOutSine"
