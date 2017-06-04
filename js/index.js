@@ -191,15 +191,15 @@
             hasRotatingPoint: false,
             hasBorders: false,
             skewY: -10,
-            top: canvas.height * 2 / 2.95,
-            left: canvas.width / 1.85,
+            top: canvas.height * 2 / 2.63
         });
         energyTo.scaleToHeight(canvas.height);
         energyTo.scaleToWidth(canvas.width);
-        textbox.scaleToHeight(canvas.height / 6);
+        textbox.scaleToHeight(canvas.height / 5);
         canvas.add(energyTo);
         canvas.add(textbox);
         canvas.centerObject(energyTo);
+        canvas.centerObjectH(textbox);
         initializeTextbox(textbox);
         canvas.renderAll();
     });
@@ -295,19 +295,15 @@
             onChange: canvas.renderAll.bind(canvas),
             ease: "easeOutSine"
         });
-        action.animate("scaleX", action.scaleX / 1.2, {
+        action.animate("scaleX", action.scaleX / 1.5, {
             duration: 700,
             onChange: canvas.renderAll.bind(canvas),
             ease: "easeOutSine"
-        }).animate("top", canvas.height * 2 / 3.2, {
+        }).animate("top", canvas.height * 2 / 2.97, {
             duration: 700,
             onChange: canvas.renderAll.bind(canvas),
             ease: "easeOutSine"
-        }).animate("left", canvas.width / 1.9, {
-            duration: 700,
-            onChange: canvas.renderAll.bind(canvas),
-            ease: "easeOutSine"
-        }).animate("scaleY", action.scaleY / 1.2, {
+        }).animate("scaleY", action.scaleY / 1.5, {
             duration: 700,
             onChange: canvas.renderAll.bind(canvas),
             ease: "easeOutSine"
