@@ -143,7 +143,8 @@
         canvas.setActiveObject(textbox);
         textbox.enterEditing();
         textbox.hiddenTextarea.maxLength = maxchars;
-        textbox.hiddenTextarea.focus();
+        textbox.hiddenTextarea.style.left = 0;
+        textbox.hiddenTextarea.style.top = 0;
         textbox.hiddenTextarea.onkeyup = (e) => {
             if ($moreOptions.css('display') === "none") {
                 $addPhotoOnly.show();
