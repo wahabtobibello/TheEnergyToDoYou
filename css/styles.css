@@ -82,12 +82,13 @@ body, button {
     transform: scale(.5,.5);
 }
 
-#down-dir{
+#down-dir i{
     color: #E5003B;
     position: absolute;
-    bottom: 0;
+    bottom: 1rem;
     right: 1rem;
     font-size: 2rem;
+    z-index: 999;
 }
 
 body > textarea{
