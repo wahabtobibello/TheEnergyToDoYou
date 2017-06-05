@@ -82,6 +82,14 @@ body, button {
     transform: scale(.5,.5);
 }
 
+#down-dir{
+    color: #E5003B;
+    position: absolute;
+    bottom: 0;
+    right: 1rem;
+    font-size: 2rem;
+}
+
 body > textarea{
     left: 0!important;
     top: 0!important;
