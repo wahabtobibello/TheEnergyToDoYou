@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f9dbeea7-545b-4bf1-87b3-1500f59eb7ee" name="Default" comment="">
+    <list default="true" id="f9dbeea7-545b-4bf1-87b3-1500f59eb7ee" name="Default" comment="try fixed textarea bug">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/css/font-awesome.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fonts/FontAwesome.otf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fonts/fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fonts/fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fonts/fontawesome-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fonts/fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fonts/fontawesome-webfont.woff2" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,27 +28,9 @@
       <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding>
-                <element signature="e#421#663#0" expanded="false" />
-                <element signature="e#673#1142#0" expanded="false" />
-                <element signature="e#1504#1714#0" expanded="false" />
-                <element signature="e#1715#2175#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-153">
-              <caret line="210" column="21" lean-forward="false" selection-start-line="210" selection-start-column="21" selection-end-line="210" selection-end-column="21" />
-              <folding>
-                <element signature="e#60#77#0" expanded="false" />
-                <element signature="e#8514#8627#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="184">
+              <caret line="146" column="19" lean-forward="true" selection-start-line="146" selection-start-column="19" selection-end-line="146" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -48,13 +38,33 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="49" column="58" lean-forward="false" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
+            <state relative-caret-position="-343">
+              <caret line="10" column="69" lean-forward="true" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="69" />
               <folding>
-                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#section#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#button#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="e#1211#1217#0" expanded="true" />
+                <element signature="e#1217#1223#0" expanded="true" />
+                <element signature="e#1223#1229#0" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#1;n#div#1;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#button#0;n#div#1;n#div#1;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="e#1479#1485#0" expanded="true" />
+                <element signature="e#1485#1491#0" expanded="true" />
+                <element signature="e#1491#1497#0" expanded="true" />
+                <element signature="e#1780#1786#0" expanded="true" />
+                <element signature="e#1786#1792#0" expanded="true" />
+                <element signature="e#1792#1798#0" expanded="true" />
+                <element signature="n#button#1;n#div#1;n#div#1;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="e#1978#1984#0" expanded="true" />
+                <element signature="e#1984#1990#0" expanded="true" />
+                <element signature="e#1990#1996#0" expanded="true" />
+                <element signature="n#div#2;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#script#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#script#2;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#script#3;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
@@ -65,8 +75,8 @@
       <file leaf-file-name="test.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2312">
-              <caret line="136" column="34" lean-forward="false" selection-start-line="136" selection-start-column="34" selection-end-line="136" selection-end-column="34" />
+            <state relative-caret-position="-204">
+              <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -78,12 +88,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="the-energy-to.svg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/img/the-energy-to.svg">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="12" column="8" lean-forward="true" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-              <folding />
+            <state relative-caret-position="187">
+              <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+              <folding>
+                <element signature="e#393#506#0" expanded="false" />
+                <element signature="e#551#1378#0" expanded="false" />
+                <element signature="e#1412#7664#0" expanded="false" />
+                <element signature="e#1459#1892#0" expanded="false" />
+                <element signature="e#2641#3031#0" expanded="false" />
+                <element signature="e#4592#5814#0" expanded="false" />
+                <element signature="e#7717#7764#0" expanded="false" />
+                <element signature="e#7818#7980#0" expanded="false" />
+                <element signature="e#8011#8096#0" expanded="false" />
+                <element signature="e#8126#8166#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -128,11 +149,11 @@
         <option value="$PROJECT_DIR$/img/Group 13.svg" />
         <option value="$PROJECT_DIR$/img/Group 11.svg" />
         <option value="$PROJECT_DIR$/img/Energy-to-yellow.svg" />
-        <option value="$PROJECT_DIR$/css/styles.css" />
         <option value="$PROJECT_DIR$/test.html" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/img/the-energy-to.svg" />
         <option value="$PROJECT_DIR$/js/index.js" />
+        <option value="$PROJECT_DIR$/css/styles.css" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -173,6 +194,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -192,6 +215,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="lucozade-energy-to-do-campaign" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lucozade-energy-to-do-campaign" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lucozade-energy-to-do-campaign" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -225,8 +262,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -242,11 +277,11 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/test.html&#10;true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\lucozade-energy-to-do-campaign\css" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\lucozade-energy-to-do-campaign" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\lucozade-energy-to-do-campaign\css" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -389,77 +424,9 @@
       <workItem from="1496302360773" duration="35774000" />
       <workItem from="1496388231777" duration="11019000" />
       <workItem from="1496403498485" duration="15772000" />
-      <workItem from="1496587285194" duration="1979000" />
-    </task>
-    <task id="LOCAL-00001" summary="add gitignore file">
-      <created>1495454287675</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1495454287675</updated>
-    </task>
-    <task id="LOCAL-00002" summary="added images">
-      <created>1495454390863</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1495454390864</updated>
-    </task>
-    <task id="LOCAL-00003" summary="added fonts">
-      <created>1495454544331</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1495454544331</updated>
-    </task>
-    <task id="LOCAL-00004" summary="added css">
-      <created>1495454576038</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1495454576038</updated>
-    </task>
-    <task id="LOCAL-00005" summary="added package.json and babelrc">
-      <created>1495454661774</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1495454661774</updated>
-    </task>
-    <task id="LOCAL-00006" summary="added js">
-      <created>1495454706947</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1495454706947</updated>
-    </task>
-    <task id="LOCAL-00007" summary="added landing page">
-      <created>1495454761414</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1495454761414</updated>
-    </task>
-    <task id="LOCAL-00008" summary="closing div bug fix">
-      <created>1495455763431</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1495455763431</updated>
-    </task>
-    <task id="LOCAL-00009" summary="jquery import fix">
-      <created>1495456017908</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1495456017908</updated>
-    </task>
-    <task id="LOCAL-00010" summary="gitignore edit">
-      <created>1495457731353</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1495457731353</updated>
+      <workItem from="1496587285194" duration="25127000" />
+      <workItem from="1496639441459" duration="2297000" />
+      <workItem from="1496655911594" duration="8364000" />
     </task>
     <task id="LOCAL-00011" summary="update package.json">
       <created>1495458533896</created>
@@ -566,31 +533,269 @@
       <option name="project" value="LOCAL" />
       <updated>1496589293755</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="update workspace.xml">
+      <created>1496589331465</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1496589331465</updated>
+    </task>
+    <task id="LOCAL-00027" summary="bug fix on panning and textbox activation">
+      <created>1496591610509</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1496591610509</updated>
+    </task>
+    <task id="LOCAL-00028" summary="try fixed textarea bug">
+      <created>1496592217418</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1496592217418</updated>
+    </task>
+    <task id="LOCAL-00029" summary="try 2 fixing textarea bug">
+      <created>1496595350322</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1496595350322</updated>
+    </task>
+    <task id="LOCAL-00030" summary="textbox display none removed">
+      <created>1496597933088</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1496597933088</updated>
+    </task>
+    <task id="LOCAL-00031" summary="try fixing 3 textarea bug">
+      <created>1496598076169</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1496598076169</updated>
+    </task>
+    <task id="LOCAL-00032" summary="finally fixed textarea bug">
+      <created>1496601742854</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1496601742854</updated>
+    </task>
+    <task id="LOCAL-00033" summary="finally fixed textarea bug">
+      <created>1496601838386</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1496601838386</updated>
+    </task>
+    <task id="LOCAL-00034" summary="fixed square image bug">
+      <created>1496602142193</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1496602142193</updated>
+    </task>
+    <task id="LOCAL-00035" summary="update textarea selector">
+      <created>1496602206489</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1496602206490</updated>
+    </task>
+    <task id="LOCAL-00036" summary="centered display of print">
+      <created>1496602985681</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1496602985681</updated>
+    </task>
+    <task id="LOCAL-00037" summary="update svg file">
+      <created>1496606522770</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1496606522770</updated>
+    </task>
+    <task id="LOCAL-00038" summary="update index.js">
+      <created>1496606601139</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1496606601139</updated>
+    </task>
+    <task id="LOCAL-00039" summary="added font awesome">
+      <created>1496608177671</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1496608177671</updated>
+    </task>
+    <task id="LOCAL-00040" summary="changed lucozade color">
+      <created>1496608297969</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1496608297969</updated>
+    </task>
+    <task id="LOCAL-00041" summary="used font awesome icons">
+      <created>1496608359138</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1496608359138</updated>
+    </task>
+    <task id="LOCAL-00042" summary="try fixed textarea bug">
+      <created>1496609257652</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1496609257652</updated>
+    </task>
+    <task id="LOCAL-00043" summary="update index.html">
+      <created>1496609319675</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1496609319675</updated>
+    </task>
+    <task id="LOCAL-00044" summary="refactor code, added start-over button">
+      <created>1496613506113</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1496613506113</updated>
+    </task>
+    <task id="LOCAL-00045" summary="try fixed textarea bug">
+      <created>1496613560998</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1496613560998</updated>
+    </task>
+    <task id="LOCAL-00046" summary="resized images">
+      <created>1496639832643</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1496639832643</updated>
+    </task>
+    <task id="LOCAL-00047" summary="panning bug fix with setCoords">
+      <created>1496640632770</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1496640632770</updated>
+    </task>
+    <task id="LOCAL-00048" summary="changed gallery pictures">
+      <created>1496641322161</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1496641322161</updated>
+    </task>
+    <task id="LOCAL-00049" summary="use jpg format instead of png&#10;no image select bug fix">
+      <created>1496641388597</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1496641388597</updated>
+    </task>
+    <task id="LOCAL-00050" summary="code refactor">
+      <created>1496641705566</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1496641705566</updated>
+    </task>
+    <task id="LOCAL-00051" summary="new images">
+      <created>1496656222156</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1496656222160</updated>
+    </task>
+    <task id="LOCAL-00052" summary="added arrow-down">
+      <created>1496657642438</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1496657642438</updated>
+    </task>
+    <task id="LOCAL-00053" summary="page transition effect added to arrow">
+      <created>1496660302582</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1496660302583</updated>
+    </task>
+    <task id="LOCAL-00054" summary="correct sizing and selection of arrow-down">
+      <created>1496660739582</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1496660739582</updated>
+    </task>
+    <task id="LOCAL-00055" summary="added lucozade logo">
+      <created>1496661754180</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1496661754180</updated>
+    </task>
+    <task id="LOCAL-00056" summary="update lucozade-logo">
+      <created>1496662408152</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1496662408152</updated>
+    </task>
+    <task id="LOCAL-00057" summary="added lucozade logo">
+      <created>1496662933108</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1496662933108</updated>
+    </task>
+    <task id="LOCAL-00058" summary="style position lucozade-logo">
+      <created>1496663020329</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1496663020329</updated>
+    </task>
+    <task id="LOCAL-00059" summary="responsive logo sizing">
+      <created>1496663427480</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1496663427480</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="238922000" />
+    <option name="totallyTimeSpent" value="272731000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1382" height="754" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24032739" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23958333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.57310927" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42857143" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.57478994" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37142858" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37142858" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -615,46 +820,54 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added images" />
-    <MESSAGE value="added fonts" />
-    <MESSAGE value="added css" />
-    <MESSAGE value="added package.json and babelrc" />
-    <MESSAGE value="added js" />
-    <MESSAGE value="added landing page" />
-    <MESSAGE value="closing div bug fix" />
-    <MESSAGE value="jquery import fix" />
-    <MESSAGE value="gitignore edit" />
-    <MESSAGE value="update package.json" />
-    <MESSAGE value="update gitignore" />
-    <MESSAGE value="update svg files" />
-    <MESSAGE value="improved implementation of text area on print" />
-    <MESSAGE value="update styles.css" />
-    <MESSAGE value="carousel slide in to studio" />
-    <MESSAGE value="added" />
-    <MESSAGE value="added Imager" />
-    <MESSAGE value="implement imager using fabricjs" />
-    <MESSAGE value="update style to work with new implementation" />
-    <MESSAGE value="better svg imaging" />
-    <MESSAGE value="added main svg graphic" />
-    <MESSAGE value="changed svg graphic to main" />
-    <MESSAGE value="update" />
-    <MESSAGE value="fixed zoom sizing" />
-    <MESSAGE value="added panning functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="added panning functionality" />
+    <MESSAGE value="finally fixed textarea bug" />
+    <MESSAGE value="fixed square image bug" />
+    <MESSAGE value="update textarea selector" />
+    <MESSAGE value="centered display of print" />
+    <MESSAGE value="update svg file" />
+    <MESSAGE value="update index.js" />
+    <MESSAGE value="added font awesome" />
+    <MESSAGE value="changed lucozade color" />
+    <MESSAGE value="used font awesome icons" />
+    <MESSAGE value="update index.html" />
+    <MESSAGE value="refactor code, added start-over button" />
+    <MESSAGE value="try fixed textarea bug" />
+    <MESSAGE value="resized images" />
+    <MESSAGE value="panning bug fix with setCoords" />
+    <MESSAGE value="changed gallery pictures" />
+    <MESSAGE value="use jpg format instead of png&#10;no image select bug fix" />
+    <MESSAGE value="code refactor" />
+    <MESSAGE value="new images" />
+    <MESSAGE value="added arrow-down" />
+    <MESSAGE value="page transition effect added to arrow" />
+    <MESSAGE value="correct sizing and selection of arrow-down" />
+    <MESSAGE value="update lucozade-logo" />
+    <MESSAGE value="added lucozade logo" />
+    <MESSAGE value="style position lucozade-logo" />
+    <MESSAGE value="responsive logo sizing" />
+    <option name="LAST_COMMIT_MESSAGE" value="responsive logo sizing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="37" />
+      <option name="time" value="38" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Downloads/Compressed/normalize.css" />
-    <entry file="file://$PROJECT_DIR$/js/main.js" />
     <entry file="file://$PROJECT_DIR$/img/.gitignore" />
     <entry file="file://$PROJECT_DIR$/doc/css.md" />
     <entry file="file://$PROJECT_DIR$/doc/usage.md" />
@@ -724,26 +937,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/img/back1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/back5.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/back6.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/back2.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/img/back1.png" />
+    <entry file="file://$PROJECT_DIR$/img/back5.png" />
+    <entry file="file://$PROJECT_DIR$/img/back6.png" />
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -782,7 +978,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="28" lean-forward="false" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -791,23 +986,62 @@
     <entry file="file://$PROJECT_DIR$/img/Group 11.svg" />
     <entry file="file://$PROJECT_DIR$/img/Energy-to-red.svg" />
     <entry file="file://$PROJECT_DIR$/img/Energy-to-yellow.svg" />
+    <entry file="file://$PROJECT_DIR$/img/797ED110.png" />
+    <entry file="file://$PROJECT_DIR$/../birthday-website/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1499">
+          <caret line="76" column="20" lean-forward="true" selection-start-line="76" selection-start-column="20" selection-end-line="76" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/the-energy-to.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/back2.png" />
+    <entry file="file://$PROJECT_DIR$/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+          <folding>
+            <element signature="e#393#506#0" expanded="false" />
+            <element signature="e#551#1378#0" expanded="false" />
+            <element signature="e#1412#7664#0" expanded="false" />
+            <element signature="e#1459#1892#0" expanded="false" />
+            <element signature="e#2641#3031#0" expanded="false" />
+            <element signature="e#4592#5814#0" expanded="false" />
+            <element signature="e#7717#7764#0" expanded="false" />
+            <element signature="e#7818#7980#0" expanded="false" />
+            <element signature="e#8011#8096#0" expanded="false" />
+            <element signature="e#8126#8166#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/lucozade-logo.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="e#421#663#0" expanded="false" />
-            <element signature="e#673#1142#0" expanded="false" />
-            <element signature="e#1504#1714#0" expanded="false" />
-            <element signature="e#1715#2175#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="184">
+          <caret line="146" column="19" lean-forward="true" selection-start-line="146" selection-start-column="19" selection-end-line="146" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2312">
-          <caret line="136" column="34" lean-forward="false" selection-start-line="136" selection-start-column="34" selection-end-line="136" selection-end-column="34" />
+        <state relative-caret-position="-204">
+          <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -818,39 +1052,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/img/797ED110.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/the-energy-to.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="8" lean-forward="true" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <caret line="210" column="21" lean-forward="false" selection-start-line="210" selection-start-column="21" selection-end-line="210" selection-end-column="21" />
-          <folding>
-            <element signature="e#60#77#0" expanded="false" />
-            <element signature="e#8514#8627#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="49" column="58" lean-forward="false" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
+        <state relative-caret-position="-343">
+          <caret line="10" column="69" lean-forward="true" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="69" />
           <folding>
-            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#section#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#button#0;n#div#0;n#div#1;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#1211#1217#0" expanded="true" />
+            <element signature="e#1217#1223#0" expanded="true" />
+            <element signature="e#1223#1229#0" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#1;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#button#0;n#div#1;n#div#1;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#1479#1485#0" expanded="true" />
+            <element signature="e#1485#1491#0" expanded="true" />
+            <element signature="e#1491#1497#0" expanded="true" />
+            <element signature="e#1780#1786#0" expanded="true" />
+            <element signature="e#1786#1792#0" expanded="true" />
+            <element signature="e#1792#1798#0" expanded="true" />
+            <element signature="n#button#1;n#div#1;n#div#1;n#div#1;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#1978#1984#0" expanded="true" />
+            <element signature="e#1984#1990#0" expanded="true" />
+            <element signature="e#1990#1996#0" expanded="true" />
+            <element signature="n#div#2;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#2;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#3;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
