@@ -11,6 +11,7 @@
     const $saveLinkBtn = $('#saveLinkBtn');
     const $startOver = $('#startOver');
     const $addPhoto = $('#addPhoto');
+    const $shareBtn = $('#shareBtn');
     const convertCanvasToImage = canvas => {
         let image = new Image();
         image.src = canvas.toDataURL("image/png");
@@ -209,5 +210,9 @@
     });
     $addPhoto.click((e) => {
         $('#fileInput').click();
+    });
+    $shareBtn.click((e) => {
+        event.preventDefault();
+        $('#share-modal').iziModal('open');
     });
 }());

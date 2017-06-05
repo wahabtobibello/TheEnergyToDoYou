@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.4.2/css/iziModal.min.css">
     <script src="https://use.fontawesome.com/ff8b633fbf.js"></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -29,7 +30,8 @@
                     </button>
                 </div>
                 <div id="moreOptions" style="display:none">
-                    <button class="btn lucozade-red"><i class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Share
+                    <button class="btn lucozade-red" id="shareBtn">
+                        <i class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Share
                     </button>
                     <a id="saveLink" download>
                         <button class="btn lucozade-red" id="saveLinkBtn"><i class="fa fa-download"
@@ -44,6 +46,19 @@
         </div>
         <div id="down-dir">
             <a href="#gallery"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+        </div>
+        <div id="share-modal">
+            <div class="modal-inner">
+                <a href="#">
+                    <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                </a>
+                <a href="#">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="#">
+                    <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                </a>
+            </div>
         </div>
     </section>
     <section id="gallery" class="gallery">
@@ -82,6 +97,7 @@
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.11/fabric.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.4.2/js/iziModal.min.js"></script>
 <script src="js/plugin.js"></script>
 <script src="js/index.js"></script>
 </body>
