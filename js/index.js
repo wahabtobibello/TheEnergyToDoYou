@@ -37,7 +37,7 @@
                 }
             }
         };
-    }
+    };
     const startUp = (canvas) => {
         let textbox = new fabric.Textbox("", {
             fontFamily: "AvenyT-Black",
@@ -82,7 +82,7 @@
         });
         let createImage = new Promise((resolve, reject) => {
             $('#fileInput').change(function () {
-                if (!URL.createObjectURL && this.files[0]) {
+                if (!this.files[0]) {
                     reject(new Error("No image selected"));
                     return;
                 }
@@ -148,7 +148,7 @@
         });
         canvas.on('mouse:down', (e) => {
             for (let i = 0; i < canvas.size(); i++) {
-                var item = canvas.item(i);
+                let item = canvas.item(i);
                 if (item.type !== "image") {
                     canvas.setActiveObject(item);
                     break;
@@ -157,7 +157,7 @@
             canvas.renderAll();
         });
         canvas.on('mouse:up', (e) => {
-            var activeObject = e.target;
+            let activeObject = e.target;
             if (activeObject && activeObject.type === "image") {
                 let tlX = activeObject.aCoords.tl.x;
                 let tlY = activeObject.aCoords.tl.y;
@@ -182,7 +182,7 @@
                 activeObject.setCoords();
             }else{
                 for (let i = 0; i < canvas.size(); i++) {
-                    var item = canvas.item(i);
+                    let item = canvas.item(i);
                     if (item.type === "textbox") {
                         initializeTextbox(canvas.item(i));
                         break;
@@ -191,7 +191,7 @@
             }
             canvas.renderAll();
         });
-    }
+    };
     let canvas = new fabric.Canvas('image-canvas', {
         width: 846,
         height: 846
