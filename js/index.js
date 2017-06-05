@@ -82,7 +82,7 @@
         });
         let createImage = new Promise((resolve, reject) => {
             $('#fileInput').change(function () {
-                if (!URL.createObjectURL) {
+                if (!URL.createObjectURL && this.files[0]) {
                     reject(new Error("No image selected"));
                     return;
                 }
@@ -199,7 +199,7 @@
     startUp(canvas);
     $saveLinkBtn.click((e) => {
         $saveLink.attr('href', convertCanvasToImage(canvas.getElement()).src);
-        $saveLink.attr('download', 'image.jpeg');
+        $saveLink.attr('download', 'image.jpg');
         $saveLink.click();
     });
     $startOver.click((e) => {
