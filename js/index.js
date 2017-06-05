@@ -179,6 +179,15 @@
                 if (brY < canvasHeight) {
                     activeObject.setTop(canvasHeight - (currentHeight / 2));
                 }
+                activeObject.setCoords();
+            }else{
+                for (let i = 0; i < canvas.size(); i++) {
+                    var item = canvas.item(i);
+                    if (item.type === "textbox") {
+                        initializeTextbox(canvas.item(i));
+                        break;
+                    }
+                }
             }
             canvas.renderAll();
         });
