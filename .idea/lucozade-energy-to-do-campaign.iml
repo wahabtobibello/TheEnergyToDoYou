@@ -14,5 +14,6 @@
     <orderEntry type="library" name="tether" level="application" />
     <orderEntry type="library" name="jquery-3.2.1" level="application" />
     <orderEntry type="library" name="fabric" level="application" />
+    <orderEntry type="library" name="iziModal" level="application" />
   </component>
 </module>

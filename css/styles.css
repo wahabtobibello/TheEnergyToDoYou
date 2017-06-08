@@ -163,6 +163,34 @@ body > textarea{
     }
 }
 
+.modal-inner {
+    display: flex;
+    justify-content: center;
+}
+.modal-inner a{
+    margin: 20px;
+}
+.modal-inner .fa{
+    font-size: 5rem;
+    -webkit-transition: transform 0.5s;
+    -moz-transition: transform 0.5s;
+    -ms-transition: transform 0.5s;
+    -o-transition: transform 0.5s;
+    transition: transform 0.5s;
+}
+.modal-inner .fa:hover{
+    transform: scale(1.1,1.1);
+}
+.fa-facebook-square{
+    color: #3b5998;
+}
+.fa-twitter-square{
+    color: #4099FF;
+}
+.fa-instagram{
+    color: #c13584;
+}
+
 .gallery {
     width: 100%;
 }
