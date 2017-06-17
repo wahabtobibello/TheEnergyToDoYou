@@ -117,35 +117,40 @@
             });
         });
         createImage.then((canvas) => {
-            canvas.defaultCursor = "default";
-            let energyTo = canvas.item(1);
-            let action = canvas.item(2);
-            action.exitEditing();
-            energyTo.animate("scaleX", energyTo.scaleX / 1.5, {
-                duration: 700,
-                onChange: canvas.renderAll.bind(canvas),
-                ease: "easeOutSine"
-            }).animate("scaleY", energyTo.scaleY / 1.5, {
-                duration: 700,
-                onChange: canvas.renderAll.bind(canvas),
-                ease: "easeOutSine"
-            });
-            action.animate("scaleX", action.scaleX / 1.5, {
-                duration: 700,
-                onChange: canvas.renderAll.bind(canvas),
-                ease: "easeOutSine"
-            }).animate("top", canvas.height * 2 / 2.97, {
-                duration: 700,
-                onChange: canvas.renderAll.bind(canvas),
-                ease: "easeOutSine"
-            }).animate("scaleY", action.scaleY / 1.5, {
-                duration: 700,
-                onChange: canvas.renderAll.bind(canvas),
-                ease: "easeOutSine"
-            });
-            canvas.renderAll();
-            $addPhotoOnly.hide();
-            $moreOptions.show();
+            return new Promise((resolve) => {
+                canvas.defaultCursor = "default";
+                let energyTo = canvas.item(1);
+                let action = canvas.item(2);
+                action.exitEditing();
+                energyTo.animate("scaleX", energyTo.scaleX / 1.5, {
+                    duration: 700,
+                    onChange: canvas.renderAll.bind(canvas),
+                    ease: "easeOutSine"
+                }).animate("scaleY", energyTo.scaleY / 1.5, {
+                    duration: 700,
+                    onChange: canvas.renderAll.bind(canvas),
+                    ease: "easeOutSine"
+                });
+                action.animate("scaleX", action.scaleX / 1.5, {
+                    duration: 700,
+                    onChange: canvas.renderAll.bind(canvas),
+                    ease: "easeOutSine"
+                }).animate("top", canvas.height * 2 / 2.97, {
+                    duration: 700,
+                    onChange: canvas.renderAll.bind(canvas),
+                    ease: "easeOutSine"
+                }).animate("scaleY", action.scaleY / 1.5, {
+                    duration: 700,
+                    onChange: canvas.renderAll.bind(canvas),
+                    ease: "easeOutSine"
+                });
+                canvas.renderAll();
+                $addPhotoOnly.hide();
+                $moreOptions.show();
+                resolve(canvas);
+            })
+        }).then((canvas) => {
+            // console.log(convertCanvasToImage(canvas.getElement()).src);
         });
         canvas.on('mouse:down', (e) => {
             for (let i = 0; i < canvas.size(); i++) {
@@ -181,7 +186,7 @@
                     activeObject.setTop(canvasHeight - (currentHeight / 2));
                 }
                 activeObject.setCoords();
-            }else{
+            } else {
                 for (let i = 0; i < canvas.size(); i++) {
                     let item = canvas.item(i);
                     if (item.type === "textbox") {
