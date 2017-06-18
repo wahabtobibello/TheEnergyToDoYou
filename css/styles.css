@@ -84,24 +84,52 @@ body, button {
 
 #down-dir i, #logo{
     position: absolute;
+    right: 1rem;
     z-index: 999;
 }
 #down-dir i{
     color: #E5003B;
-    right: 1rem;
     bottom: 1rem;
     font-size: 2rem;
 }
-
 #logo{
-    top: -5rem;
-    right: 0;
-    width:220px;
+    top: 1rem;
+}
+#logo svg{
+    width:200px;
 }
 
 body > textarea{
     left: 0!important;
-    top: 0!important;
+    top:65%!important;
+}
+
+@media (max-width: 500px) and (min-width: 341px) {
+    #canvas-outer {
+        width: 306.09999999999997px;
+        height: 306.09999999999997px;
+    }
+
+    .btn{
+        font-size: 0.7rem;
+    }
+    #logo svg{
+        width: 120px
+    }
+    #addPhotoOnly button{
+        width: 306.09999999999997px;
+    }
+    #moreOptions button{
+        width: calc(306.09999999999997px / 3);
+    }
+    #canvas-outer .canvas-container {
+        -webkit-transform-origin: top left;
+        -ms-transform-origin: top left;
+        transform-origin: top left;
+        -webkit-transform: scale(.35,.35);
+        -ms-transform: scale(.35,.35);
+        transform: scale(.35,.35);
+    }
 }
 
 @media (max-width: 340px) {
@@ -113,9 +141,8 @@ body > textarea{
     .btn{
         font-size: 0.6rem;
     }
-    #logo{
-        top: -3.5rem;
-        width: 170px
+    #logo svg{
+        width: 100px
     }
 
     #addPhotoOnly button{
@@ -131,35 +158,6 @@ body > textarea{
         -webkit-transform: scale(.3,.3);
         -ms-transform: scale(.3,.3);
         transform: scale(.3,.3);
-    }
-}
-
-@media (max-width: 500px) and (min-width: 341px) {
-    #canvas-outer {
-        width: 306.09999999999997px;
-        height: 306.09999999999997px;
-    }
-
-    .btn{
-        font-size: 0.7rem;
-    }
-    #logo{
-        top: -4rem;
-        width: 190px
-    }
-    #addPhotoOnly button{
-        width: 306.09999999999997px;
-    }
-    #moreOptions button{
-        width: calc(306.09999999999997px / 3);
-    }
-    #canvas-outer .canvas-container {
-        -webkit-transform-origin: top left;
-        -ms-transform-origin: top left;
-        transform-origin: top left;
-        -webkit-transform: scale(.35,.35);
-        -ms-transform: scale(.35,.35);
-        transform: scale(.35,.35);
     }
 }
 
