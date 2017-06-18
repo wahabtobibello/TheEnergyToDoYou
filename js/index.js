@@ -205,7 +205,9 @@
         $addPhotoOnly.hide();
         $moreOptions.show();
     };
-
+    $("#file-input").click(function () {
+        this.value = "";
+    });
     $("#file-input").change(function () {
         if (!this.files[0]) {
             console.error("No image selected");
