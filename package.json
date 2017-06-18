@@ -10,8 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
-    "izimodal": "^1.4.2",
-    "font-awesome": "^4.7.0"
+    "fabric": "^1.7.13",
+    "font-awesome": "^4.7.0",
+    "izimodal": "^1.4.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
