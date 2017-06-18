@@ -193,15 +193,15 @@
         clipArtObj.setTop(0);
 
         canvas.sendToBack(imageObj);
-        // groupObj.animate("scaleX", groupObj.scaleX / 1.5, {
-        //     duration: 700,
-        //     onChange: canvas.renderAll.bind(canvas),
-        //     ease: "easeOutSine"
-        // }).animate("scaleY", groupObj.scaleY / 1.5, {
-        //     duration: 700,
-        //     onChange: canvas.renderAll.bind(canvas),
-        //     ease: "easeOutSine"
-        // });
+        groupObj.animate("scaleX", groupObj.scaleX / 1.5, {
+            duration: 700,
+            onChange: canvas.renderAll.bind(canvas),
+            ease: "easeOutSine"
+        }).animate("scaleY", groupObj.scaleY / 1.5, {
+            duration: 700,
+            onChange: canvas.renderAll.bind(canvas),
+            ease: "easeOutSine"
+        });
         $addPhotoOnly.hide();
         $moreOptions.show();
     };
