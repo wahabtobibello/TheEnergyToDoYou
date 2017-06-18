@@ -7,10 +7,9 @@
     <title>Energy To Do</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.4.2/css/iziModal.min.css">
-    <script src="https://use.fontawesome.com/ff8b633fbf.js"></script>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./node_modules/izimodal/css/iziModal.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -33,7 +32,7 @@
                     <canvas id="image-canvas"></canvas>
                 </div>
                 <div id="controls">
-                    <input type="file" style="display:none" id="fileInput">
+                    <input type="file" style="display:none" id="file-input">
                     <div id="addPhotoOnly" style="display:none">
                         <button id="addPhoto" class="btn lucozade-red"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add
                         Photo
@@ -82,8 +81,7 @@
             </ul>
         </section>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
     <script>
         $(document).ready(function () {
             $("a").on('click', function (event) {
@@ -99,12 +97,10 @@
             });
         });
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
-        crossorigin="anonymous"></script>
+    <script src="./node_modules/tether/dist/js/tether.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.11/fabric.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.4.2/js/iziModal.min.js"></script>
+    <script src="./node_modules/izimodal/js/iziModal.js"></script>
     <script src="js/plugin.js"></script>
     <script src="js/index.js"></script>
 </body>
