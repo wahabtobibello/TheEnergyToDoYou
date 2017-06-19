@@ -1,9 +1,6 @@
-/**
- * Created by BelloPC on 17/05/2017.
- */
 'use strict';
 
-(function () {
+(function (fabric, $) {
     const maxchars = 10;
     const $addPhotoOnly = $('#addPhotoOnly');
     const $moreOptions = $('#moreOptions');
@@ -73,6 +70,7 @@
         });
     });
     const startUp = (canvas) => {
+        canvas.clear();
         renderClipArtAndTextbox.then((clipArtObj) => {
             let textbox = new fabric.Textbox("", {
                 fontFamily: "AvenyT-Black",
@@ -205,6 +203,7 @@
         $addPhotoOnly.hide();
         $moreOptions.show();
     };
+
     $("#file-input").click(function () {
         this.value = "";
     });
@@ -228,7 +227,6 @@
     });
 
     $startOver.click((e) => {
-        canvas.clear();
         startUp(canvas);
         $moreOptions.hide();
     });
@@ -241,5 +239,5 @@
         event.preventDefault();
         $('#share-modal').iziModal('open');
     });
+}(fabric, jQuery));
 
-}());
