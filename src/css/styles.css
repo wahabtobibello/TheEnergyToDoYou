@@ -8,12 +8,12 @@
 }
 @font-face {
     font-family: AvenyT-Black;
-    src: url("../assets/fonts/Aveny-T_Black.otf") format("opentype");
+    src: url("../fonts/Aveny-T_Black.otf") format("opentype");
 }
 
 @font-face {
     font-family: Aveny T;
-    src: url("../assets/fonts/Aveny-T_Regular.otf") format("opentype");
+    src: url("../fonts/Aveny-T_Regular.otf") format("opentype");
 }
 
 body, button {
@@ -23,7 +23,7 @@ body, button {
 .header {
     width: 100%;
     height: 100vh;
-    background: radial-gradient(circle at 50% 300%, #f8d60c 80%, transparent 100%), url("../assets/img/water-drops.jpg");
+    background: radial-gradient(circle at 50% 300%, #f8d60c 80%, transparent 100%), url("../img/water-drops.jpg");
     background-size: auto, cover;
     background-position: top;
     position: relative;

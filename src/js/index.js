@@ -15,7 +15,7 @@
     height: 846
   });
   const renderClipArtAndTextbox = new Promise((resolve, reject) => {
-    fabric.loadSVGFromURL('./assets/img/the-energy-to.svg', function (objects, options) {
+    fabric.loadSVGFromURL('./img/the-energy-to.svg', function (objects, options) {
       let clipArtObj = fabric.util.groupSVGElements(objects, options);
       clipArtObj.selectable = false;
       clipArtObj.evented = false;
@@ -220,6 +220,19 @@
       initializeTextbox(getObjectWithType(canvas, "textbox"));
     }
     canvas.renderAll();
+  });
+  $(document).ready(function () {
+    $("a").on('click', function (event) {
+      if (this.hash !== "") {
+        event.preventDefault();
+        var hash = this.hash;
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 700, function () {
+          window.location.hash = hash;
+        });
+      }
+    });
   });
   $fileInput.click(function () {
     this.value = "";
