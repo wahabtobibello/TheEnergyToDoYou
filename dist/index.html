@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Energy To Do</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/index.min.css">
+</head>
+
+<body>
+     <div class="wrapper">
+        <section class="header landing">
+            <div id="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 382 108">
+                    <title>lucozade-logo</title>
+                    <g id="0eb5f60f-c01a-4d79-8527-036e853f218a" data-name="Layer 2">
+                        <g id="80a9c59f-8263-4a8b-a279-7d37820d3eaf" data-name="Logo Image">
+                            <image id="94bdbfe9-95dc-4239-8a73-03f47a7cf7d7" data-name="Logo Image" width="764" height="216" transform="scale(0.5)" xlink:href="./img/lucozade-logo.png"
+                            />
+                        </g>
+                    </g>
+                </svg>
+            </div>
+            <div id="studio">
+                <div id="canvas-outer">
+                    <canvas id="image-canvas"></canvas>
+                </div>
+                <div id="controls">
+                    <input type="file" style="display:none" id="file-input">
+                    <div id="addPhotoOnly" style="display:none">
+                        <button id="addPhoto" class="btn lucozade-red"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add
+                        Photo
+                    </button>
+                    </div>
+                    <div id="moreOptions" style="display:none">
+                        <button class="btn lucozade-red" id="shareBtn">
+                        <i class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Share
+                    </button>
+                        <a id="saveLink" download>
+                        <button class="btn lucozade-red" id="saveLinkBtn"><i class="fa fa-download"
+                                                                             aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Save
+                        </button>
+                    </a>
+                        <button id="startOver" class="btn lucozade-red"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Start
+                        Over
+                    </button>
+                    </div>
+                </div>
+            </div>
+            <div id="down-dir">
+                <a href="#gallery"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+            </div>
+            <div id="share-modal">
+                <div class="modal-inner">
+                    <a href="#">
+                    <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                </a>
+                    <a href="#">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+                    <a href="#">
+                    <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                </a>
+                </div>
+            </div>
+        </section>
+        <section id="gallery" class="gallery">
+            <ul class="row">
+                <li class="col-md-4 col-sm-6"><img src="./img/back1.jpg" /></li>
+                <li class="col-md-4 col-sm-6"><img src="./img/back2.jpg" /></li>
+                <li class="col-md-4 col-sm-6"><img src="./img/back3.jpg" /></li>
+                <li class="col-md-4 col-sm-6"><img src="./img/back4.jpg" /></li>
+                <li class="col-md-4 col-sm-6"><img src="./img/back5.jpg" /></li>
+                <li class="col-md-4 col-sm-6"><img src="./img/back6.jpg" /></li>
+            </ul>
+        </section>
+    </div>
+    <script src="js/index.min.js"></script>
+</body>
+
+</html>
