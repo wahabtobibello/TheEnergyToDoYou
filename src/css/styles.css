@@ -66,10 +66,15 @@ body, button {
     transition-delay: 0s;
 }
 
-#addPhotoOnly button{
+#addPhotoOnly button, #slider{
     width: 433px;
 }
-
+#slider, #tools{
+    margin-bottom: 20px;
+}
+#tools span{
+    margin-right: 20px;
+}
 #moreOptions button{
     width: calc(433px / 3);
 }
