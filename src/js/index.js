@@ -39,6 +39,16 @@
     image.src = canvas.toDataURL("image/png");
     return image;
   };
+  const saveAsCanvas = (canvas) => {
+    if (saveAs !== undefined) {
+      canvas.toBlobHD(function (blob) {
+        saveAs(
+          blob
+          , "image.png"
+        );
+      }, "image/png");
+    }
+  }
   const initializeTextbox = (textbox) => {
     canvas.setActiveObject(textbox);
     textbox.enterEditing();
@@ -269,9 +279,7 @@
     };
   });
   $saveLinkBtn.click((e) => {
-    $saveLink.attr('href', convertCanvasToImage(canvas.getElement()).src);
-    $saveLink.attr('download', 'image.jpg');
-    $saveLink.click();
+    saveAsCanvas(canvas.getElement());
   });
   $startOver.click((e) => {
     startUp(canvas);
@@ -298,18 +306,17 @@
     e.target.style.color = lucozadeRed;
     $slider.slider('option', 'min', 1);
     $slider.slider('option', 'max', 3);
-    $slider.slider('option', 'value',0 /*set slider value to zoom value*/);
-  $slider.slider('option', 'slide', () => { });
-  $slider.slider('option', 'change', () => { });
-})
-$contrastTool.click((e) => {
-  e.target.style.color = lucozadeRed;
-  $slider.slider('option', 'min', -100);
-  $slider.slider('option', 'max', 100);
-  $slider.slider('option', 'value', filter(canvas.item(0), 0, 'contrast'));
-  $slider.slider('option', 'slide', () => { filter(canvas.item(0), 0, 'contrast', $slider.slider('value')) });
-  $slider.slider('option', 'change', () => { filter(canvas.item(0), 0, 'contrast', $slider.slider('value')) });
-
-})
+    $slider.slider('option', 'slide', () => { });
+    $slider.slider('option', 'change', () => { });
+    $slider.slider('option', 'value', 0 /*set slider value to zoom value*/);
+  })
+  $contrastTool.click((e) => {
+    e.target.style.color = lucozadeRed;
+    $slider.slider('option', 'min', -100);
+    $slider.slider('option', 'max', 100);
+    $slider.slider('option', 'value', filter(canvas.item(0), 0, 'contrast'));
+    $slider.slider('option', 'slide', () => { filter(canvas.item(0), 0, 'contrast', $slider.slider('value')) });
+    $slider.slider('option', 'change', () => { filter(canvas.item(0), 0, 'contrast', $slider.slider('value')) });
+  })
 }(fabric, jQuery));
 
