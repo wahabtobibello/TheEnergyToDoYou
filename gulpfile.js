@@ -24,10 +24,14 @@ gulp.task("concatScripts", ["compileScripts"], function () {
   return gulp
     .src([
       './node_modules/jquery/dist/jquery.js',
+      './jquery-ui-1.12.1.custom/jquery-ui.js',
       './node_modules/tether/dist/js/tether.js',
       './node_modules/bootstrap/dist/js/bootstrap.js',
       './node_modules/fabric/dist/fabric.js',
       './node_modules/izimodal/js/iziModal.js',
+      './other_modules/Blob.js',
+      './other_modules/canvas-toBlob.js',
+      './other_modules/file-saver/FileSaver.js',
       './dist/js/index.js',
     ])
     .pipe(concat('index.js'))
@@ -44,6 +48,8 @@ gulp.task("minifyScripts", ["concatScripts"], function () {
 
 gulp.task('concatCss', function () {
   gulp.src([
+    './jquery-ui-1.12.1.custom/jquery-ui.css',
+    './jquery-ui-1.12.1.custom/jquery-ui.theme.css',
     "./node_modules/bootstrap/dist/css/bootstrap.css",
     "./node_modules/izimodal/css/iziModal.css",
     "./node_modules/font-awesome/css/font-awesome.css",
