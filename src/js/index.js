@@ -2,6 +2,8 @@
 
 (function (fabric, $) {
   const maxchars = 10;
+  const defaultBlack = "#292b2c";
+  const lucozadeRed = "#E5003B";
   const $addPhotoOnly = $('#addPhotoOnly');
   const $moreOptions = $('#moreOptions');
   const $saveLink = $('#saveLink');
@@ -10,6 +12,11 @@
   const $addPhoto = $('#addPhoto');
   const $shareBtn = $('#shareBtn');
   const $fileInput = $("#file-input");
+  const $shareModal = $("#share-modal");
+  const $slider = $("#slider");
+  const $tool = $("#tools span");
+  const $zoomTool = $("#zoomTool");
+  const $contrastTool = $("#contrastTool");
   const canvas = new fabric.Canvas('image-canvas', {
     width: 846,
     height: 846
@@ -65,8 +72,7 @@
         textbox.text = inputText.slice(0, inputText.length - 1);
         $fileInput.click();
       } else if (charCode >= 97 && charCode <= 122) {
-        upperCase = String.fromCharCode(charCode - 32);
-        textbox.text = inputText.slice(0, inputText.length - 1) + upperCase;
+        textbox.text = textbox.text.toUpperCase();
       }
       canvas.renderAll();
     };
@@ -137,6 +143,10 @@
     else if (imageObj.width > imageObj.height) {
       imageObj.scaleToHeight(imageObj.canvas.height);
     }
+    imageObj.filters.push(new fabric.Image.filters.Contrast({
+      contrast: 0
+    }));
+    imageObj.applyFilters(canvas.renderAll.bind(canvas));
 
     canvas.add(groupObj);
     addClipArt(groupObj, clipArtObj, textObj);
@@ -181,6 +191,15 @@
       initializeTextbox(textbox);
     });
   };
+  const filter = (imageObj, index, prop, value) => {
+    if (value === undefined) {
+      return imageObj.filters[index][prop];
+    }
+    if (imageObj.filters[index]) {
+      imageObj.filters[index][prop] = value;
+      imageObj.applyFilters(canvas.renderAll.bind(canvas));
+    }
+  }
   startUp(canvas);
   canvas.on('mouse:down', (e) => {
     for (let i = 0; i < canvas.size(); i++) {
@@ -265,5 +284,32 @@
     event.preventDefault();
     $('#share-modal').iziModal('open');
   });
+  $shareModal.iziModal({
+    autoOpen: false,
+    closeButton: true
+  });
+  $slider.slider({
+    orientation: "horizontal"
+  });
+  $tool.click((e) => {
+    $tool.css('color', defaultBlack);
+  })
+  $zoomTool.click((e) => {
+    e.target.style.color = lucozadeRed;
+    $slider.slider('option', 'min', 1);
+    $slider.slider('option', 'max', 3);
+    $slider.slider('option', 'value',0 /*set slider value to zoom value*/);
+  $slider.slider('option', 'slide', () => { });
+  $slider.slider('option', 'change', () => { });
+})
+$contrastTool.click((e) => {
+  e.target.style.color = lucozadeRed;
+  $slider.slider('option', 'min', -100);
+  $slider.slider('option', 'max', 100);
+  $slider.slider('option', 'value', filter(canvas.item(0), 0, 'contrast'));
+  $slider.slider('option', 'slide', () => { filter(canvas.item(0), 0, 'contrast', $slider.slider('value')) });
+  $slider.slider('option', 'change', () => { filter(canvas.item(0), 0, 'contrast', $slider.slider('value')) });
+
+})
 }(fabric, jQuery));
 
