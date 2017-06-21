@@ -175,6 +175,9 @@
     });
     $addPhotoOnly.hide();
     $moreOptions.show();
+
+    $slider.slider('option', 'slide', contrastToolHandler);
+    $slider.slider('option', 'change', contrastToolHandler); 
   };
   const startUp = (canvas) => {
     canvas.clear();
@@ -210,6 +213,7 @@
       imageObj.applyFilters(canvas.renderAll.bind(canvas));
     }
   }
+  const contrastToolHandler = () => { filter(canvas.item(0), 0, 'contrast', $slider.slider('value')) };  
   startUp(canvas);
   canvas.on('mouse:down', (e) => {
     for (let i = 0; i < canvas.size(); i++) {
@@ -297,8 +301,13 @@
     closeButton: true
   });
   $slider.slider({
-    orientation: "horizontal"
+    orientation: "horizontal",
+    min: -100,
+    max: 100,
+    value: 0,
   });
+  $contrastTool.css('color', lucozadeRed);
+  $slider.slider('option', 'value', 0);
   $tool.click((e) => {
     $tool.css('color', defaultBlack);
   })
@@ -311,12 +320,12 @@
     $slider.slider('option', 'value', 0 /*set slider value to zoom value*/);
   })
   $contrastTool.click((e) => {
-    e.target.style.color = lucozadeRed;
+    $contrastTool.css('color', lucozadeRed);
     $slider.slider('option', 'min', -100);
     $slider.slider('option', 'max', 100);
     $slider.slider('option', 'value', filter(canvas.item(0), 0, 'contrast'));
-    $slider.slider('option', 'slide', () => { filter(canvas.item(0), 0, 'contrast', $slider.slider('value')) });
-    $slider.slider('option', 'change', () => { filter(canvas.item(0), 0, 'contrast', $slider.slider('value')) });
+    $slider.slider('option', 'slide', contrastToolHandler);
+    $slider.slider('option', 'change', contrastToolHandler); 
   })
 }(fabric, jQuery));
 
