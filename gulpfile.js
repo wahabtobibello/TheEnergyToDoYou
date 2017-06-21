@@ -31,9 +31,10 @@ gulp.task("concatScripts", ["compileScripts"], function () {
       './node_modules/izimodal/js/iziModal.js',
       './other_modules/Blob.js',
       './other_modules/canvas-toBlob.js',
-      './other_modules/file-saver/FileSaver.js',
+      './node_modules/file-saver/FileSaver.js',
       './dist/js/index.js',
     ])
+    .on('error', function (err) { util.log(util.colors.red('[Error]'), err.toString()); })
     .pipe(concat('index.js'))
     .pipe(gulp.dest('./dist/js'));
 });
