@@ -13851,6 +13851,18 @@ body, button {
 #tools span{
     margin-right: 20px;
 }
+#tools span:before{
+    font-family: FontAwesome;
+}
+#zoom-tool:before{
+    content: "\f047";
+}
+#contrast-tool:before{
+    content: "\f042";
+}
+#brightness-tool:before{
+    content: "\f185";
+}
 #moreOptions button{
     width: calc(433px / 3);
 }

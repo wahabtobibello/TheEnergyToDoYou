@@ -45911,7 +45911,6 @@ if (typeof module !== "undefined" && module.exports) {
     textbox.hiddenTextarea.canvas = canvas;
     textbox.hiddenTextarea.maxLength = maxchars;
     textbox.hiddenTextarea.focus();
-    textbox.hiddenTextarea.onkeydown = function (e) {};
     textbox.hiddenTextarea.onkeyup = function (e) {
       var canvas = e.target.canvas;
       var textbox = getObjectWithType(canvas, 'textbox');
