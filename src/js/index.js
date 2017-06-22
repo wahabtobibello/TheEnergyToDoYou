@@ -56,9 +56,6 @@
     textbox.hiddenTextarea.canvas = canvas;
     textbox.hiddenTextarea.maxLength = maxchars;
     textbox.hiddenTextarea.focus();
-    textbox.hiddenTextarea.onkeydown = (e) => {
-
-    };
     textbox.hiddenTextarea.onkeyup = (e) => {
       let canvas = e.target.canvas;
       let textbox = getObjectWithType(canvas, 'textbox');
