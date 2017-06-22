@@ -13,6 +13,9 @@
   const $shareBtn = $('#shareBtn');
   const $fileInput = $("#file-input");
   const $shareModal = $("#share-modal");
+  const $facebookShare = $("#facebook-share");
+  const $twitterShare = $("#twitter-share");
+  const $instagramShare = $("#instagram-share");
   const $slider = $("#slider");
   const $tool = $("#tools span");
   const $zoomTool = $("#zoom-tool");
@@ -313,6 +316,15 @@
   $shareModal.iziModal({
     autoOpen: false,
     closeButton: true
+  });
+	$facebookShare.click((e) => {
+    console.log("click!!!");
+  });
+	$twitterShare.click((e) => {
+    console.log("click!!!");
+  });
+	$instagramShare.click((e) => {
+    console.log("click!!!");
   });
   $slider.slider({
     orientation: "horizontal",
