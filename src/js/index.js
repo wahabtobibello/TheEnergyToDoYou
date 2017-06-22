@@ -215,6 +215,7 @@
     let value = $slider.slider('value');
     imageObj.setScaleX(imageObj.newScaleX * value);
     imageObj.setScaleY(imageObj.newScaleY * value);
+    imageObj.setCoords();
     rePositionImage(canvas, imageObj);
     canvas.renderAll();
   };
@@ -325,7 +326,7 @@
     $slider.slider('option', 'max', 5);
     $slider.slider('option', 'step', 0.1);
     $slider.slider('option', 'change', zoomToolHandler);
-    $slider.slider('option', 'value', canvas.item(0).scaleX / canvas.item(0).newScaleX);
+    $slider.slider('option', 'value', Math.round((canvas.item(0).scaleX / canvas.item(0).newScaleX) * 10) / 10);
   });
   $contrastTool.click((e) => {
     $slider.slider('option', 'min', -100);
