@@ -2,9 +2,8 @@
 ## TO-DO
 1. do without bootstrap
 2. share button
-  1. facebook
-  2. twitter
-  3. instagram
+  1. twitter
+  2. instagram
 3. decrease textbox weight with increasing text length from 6-10
 4. water-mark lucozade
 5. loading widget
