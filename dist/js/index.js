@@ -45873,8 +45873,9 @@ if (typeof module !== "undefined" && module.exports) {
   var $shareModal = $("#share-modal");
   var $slider = $("#slider");
   var $tool = $("#tools span");
-  var $zoomTool = $("#zoomTool");
-  var $contrastTool = $("#contrastTool");
+  var $zoomTool = $("#zoom-tool");
+  var $brightnessTool = $("#brightness-tool");
+  var $contrastTool = $("#contrast-tool");
   var canvas = new fabric.Canvas('image-canvas', {
     width: 846,
     height: 846
@@ -45994,7 +45995,6 @@ if (typeof module !== "undefined" && module.exports) {
 
     canvas.clear();
     canvas.defaultCursor = "default";
-
     canvas.add(imageObj);
     if (imageObj.width <= imageObj.height) {
       imageObj.scaleToWidth(imageObj.canvas.width);
@@ -46003,6 +46003,9 @@ if (typeof module !== "undefined" && module.exports) {
     }
     imageObj.filters.push(new fabric.Image.filters.Contrast({
       contrast: 0
+    }));
+    imageObj.filters.push(new fabric.Image.filters.Brightness({
+      brightness: 0
     }));
     imageObj.applyFilters(canvas.renderAll.bind(canvas));
 
@@ -46021,10 +46024,6 @@ if (typeof module !== "undefined" && module.exports) {
       onChange: canvas.renderAll.bind(canvas),
       ease: "easeOutSine"
     });
-    $addPhotoOnly.hide();
-    $moreOptions.show();
-    $slider.slider('option', 'slide', contrastToolHandler);
-    $slider.slider('option', 'change', contrastToolHandler);
   };
   var startUp = function startUp(canvas) {
     canvas.clear();
@@ -46062,6 +46061,9 @@ if (typeof module !== "undefined" && module.exports) {
   };
   var contrastToolHandler = function contrastToolHandler() {
     filter(canvas.item(0), 0, 'contrast', $slider.slider('value'));
+  };
+  var brightnessToolHandler = function brightnessToolHandler() {
+    filter(canvas.item(0), 1, 'brightness', $slider.slider('value'));
   };
   startUp(canvas);
   canvas.on('mouse:down', function (e) {
@@ -46129,6 +46131,10 @@ if (typeof module !== "undefined" && module.exports) {
     img.src = u;
     img.onload = function () {
       renderImage(canvas, img);
+      $addPhotoOnly.hide();
+      $moreOptions.show();
+      $contrastTool.css('color', lucozadeRed);
+      $contrastTool.click();
     };
   });
   $saveLinkBtn.click(function (e) {
@@ -46150,30 +46156,28 @@ if (typeof module !== "undefined" && module.exports) {
     closeButton: true
   });
   $slider.slider({
-    orientation: "horizontal",
-    min: -100,
-    max: 100,
-    value: 0
+    orientation: "horizontal"
   });
-  $contrastTool.css('color', lucozadeRed);
-  $slider.slider('option', 'value', 0);
   $tool.click(function (e) {
     $tool.css('color', defaultBlack);
+    $(e.target).css('color', lucozadeRed);
   });
   $zoomTool.click(function (e) {
-    e.target.style.color = lucozadeRed;
     $slider.slider('option', 'min', 1);
     $slider.slider('option', 'max', 3);
-    $slider.slider('option', 'slide', function () {});
     $slider.slider('option', 'change', function () {});
     $slider.slider('option', 'value', 0 /*set slider value to zoom value*/);
   });
   $contrastTool.click(function (e) {
-    $contrastTool.css('color', lucozadeRed);
     $slider.slider('option', 'min', -100);
     $slider.slider('option', 'max', 100);
-    $slider.slider('option', 'value', filter(canvas.item(0), 0, 'contrast'));
-    $slider.slider('option', 'slide', contrastToolHandler);
     $slider.slider('option', 'change', contrastToolHandler);
+    $slider.slider('option', 'value', filter(canvas.item(0), 0, 'contrast'));
+  });
+  $brightnessTool.click(function (e) {
+    $slider.slider('option', 'min', -100);
+    $slider.slider('option', 'max', 100);
+    $slider.slider('option', 'change', brightnessToolHandler);
+    $slider.slider('option', 'value', filter(canvas.item(0), 1, 'brightness'));
   });
 })(fabric, jQuery);
