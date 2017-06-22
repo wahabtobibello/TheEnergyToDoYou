@@ -45871,6 +45871,9 @@ if (typeof module !== "undefined" && module.exports) {
   var $shareBtn = $('#shareBtn');
   var $fileInput = $("#file-input");
   var $shareModal = $("#share-modal");
+  var $facebookShare = $("#facebook-share");
+  var $twitterShare = $("#twitter-share");
+  var $instagramShare = $("#instagram-share");
   var $slider = $("#slider");
   var $tool = $("#tools span");
   var $zoomTool = $("#zoom-tool");
@@ -46065,6 +46068,7 @@ if (typeof module !== "undefined" && module.exports) {
     var value = $slider.slider('value');
     imageObj.setScaleX(imageObj.newScaleX * value);
     imageObj.setScaleY(imageObj.newScaleY * value);
+    imageObj.setCoords();
     rePositionImage(canvas, imageObj);
     canvas.renderAll();
   };
@@ -46167,6 +46171,15 @@ if (typeof module !== "undefined" && module.exports) {
     autoOpen: false,
     closeButton: true
   });
+  $facebookShare.click(function (e) {
+    console.log("click!!!");
+  });
+  $twitterShare.click(function (e) {
+    console.log("click!!!");
+  });
+  $instagramShare.click(function (e) {
+    console.log("click!!!");
+  });
   $slider.slider({
     orientation: "horizontal"
   });
@@ -46179,7 +46192,7 @@ if (typeof module !== "undefined" && module.exports) {
     $slider.slider('option', 'max', 5);
     $slider.slider('option', 'step', 0.1);
     $slider.slider('option', 'change', zoomToolHandler);
-    $slider.slider('option', 'value', canvas.item(0).scaleX / canvas.item(0).newScaleX);
+    $slider.slider('option', 'value', Math.round(canvas.item(0).scaleX / canvas.item(0).newScaleX * 10) / 10);
   });
   $contrastTool.click(function (e) {
     $slider.slider('option', 'min', -100);

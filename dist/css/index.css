@@ -13909,7 +13909,7 @@ body > textarea{
     #logo svg{
         width: 120px
     }
-    #addPhotoOnly button{
+    #addPhotoOnly button,  #slider{
         width: 306.09999999999997px;
     }
     #moreOptions button{
@@ -13938,7 +13938,7 @@ body > textarea{
         width: 100px
     }
 
-    #addPhotoOnly button{
+    #addPhotoOnly button,  #slider{
         width: 263.79999999999995px;
     }
     #moreOptions button{
