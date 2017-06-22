@@ -317,14 +317,14 @@
     autoOpen: false,
     closeButton: true
   });
-	$facebookShare.click((e) => {
-    console.log("click!!!");
+  $(document).on("click", "#facebook-share", function (event) {
+    alert("GO");
   });
-	$twitterShare.click((e) => {
-    console.log("click!!!");
+  $(document).on("click", "#twitter-share", function (event) {
+    alert("GO");
   });
-	$instagramShare.click((e) => {
-    console.log("click!!!");
+  $(document).on("click", "#instagram-share", function (event) {
+    alert("GO");
   });
   $slider.slider({
     orientation: "horizontal",
