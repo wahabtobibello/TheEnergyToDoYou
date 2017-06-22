@@ -153,6 +153,8 @@
     else if (imageObj.width > imageObj.height) {
       imageObj.scaleToHeight(imageObj.canvas.height);
     }
+    imageObj.newScaleX = imageObj.scaleX;
+    imageObj.newScaleY = imageObj.scaleY;
     imageObj.filters.push(new fabric.Image.filters.Contrast({
       contrast: 0
     }));
@@ -211,8 +213,39 @@
       imageObj.applyFilters(canvas.renderAll.bind(canvas));
     }
   }
+  const zoomToolHandler = () => {
+    let imageObj = canvas.item(0);
+    let value = $slider.slider('value');
+    imageObj.setScaleX(imageObj.newScaleX * value);
+    imageObj.setScaleY(imageObj.newScaleY * value);
+    rePositionImage(canvas, imageObj);
+    canvas.renderAll();
+  };
   const contrastToolHandler = () => { filter(canvas.item(0), 0, 'contrast', $slider.slider('value')) };
-  const brightnessToolHandler = () => { filter(canvas.item(0), 1, 'brightness', $slider.slider('value'))};
+  const brightnessToolHandler = () => { filter(canvas.item(0), 1, 'brightness', $slider.slider('value')) };
+  const rePositionImage = (canvas, imageObj) => {
+    let tlX = imageObj.aCoords.tl.x;
+    let tlY = imageObj.aCoords.tl.y;
+    let brX = imageObj.aCoords.br.x;
+    let brY = imageObj.aCoords.br.y;
+    let canvasWidth = canvas.width;
+    let canvasHeight = canvas.height;
+    let currentWidth = imageObj.width * imageObj.scaleX;
+    let currentHeight = imageObj.height * imageObj.scaleY;
+    if (tlX >= 0) {
+      imageObj.setLeft(currentWidth / 2);
+    }
+    if (tlY >= 0) {
+      imageObj.setTop(currentHeight / 2);
+    }
+    if (brX <= canvasWidth) {
+      imageObj.setLeft(canvasWidth - (currentWidth / 2));
+    }
+    if (brY <= canvasHeight) {
+      imageObj.setTop(canvasHeight - (currentHeight / 2));
+    }
+    imageObj.setCoords();
+  }
   startUp(canvas);
   canvas.on('mouse:down', (e) => {
     for (let i = 0; i < canvas.size(); i++) {
@@ -227,27 +260,7 @@
   canvas.on('mouse:up', (e) => {
     let activeObject = e.target;
     if (activeObject && activeObject.type === "image") {
-      let tlX = activeObject.aCoords.tl.x;
-      let tlY = activeObject.aCoords.tl.y;
-      let brX = activeObject.aCoords.br.x;
-      let brY = activeObject.aCoords.br.y;
-      let canvasWidth = canvas.width;
-      let canvasHeight = canvas.height;
-      let currentWidth = activeObject.width * activeObject.scaleX;
-      let currentHeight = activeObject.height * activeObject.scaleY;
-      if (tlX > 0) {
-        activeObject.setLeft(currentWidth / 2);
-      }
-      if (tlY > 0) {
-        activeObject.setTop(currentHeight / 2);
-      }
-      if (brX < canvasWidth) {
-        activeObject.setLeft(canvasWidth - (currentWidth / 2));
-      }
-      if (brY < canvasHeight) {
-        activeObject.setTop(canvasHeight - (currentHeight / 2));
-      }
-      activeObject.setCoords();
+      rePositionImage(canvas, activeObject);
     } else {
       initializeTextbox(getObjectWithType(canvas, "textbox"));
     }
@@ -312,19 +325,22 @@
   });
   $zoomTool.click((e) => {
     $slider.slider('option', 'min', 1);
-    $slider.slider('option', 'max', 3);
-    $slider.slider('option', 'change', () => { });
-    $slider.slider('option', 'value', 0 /*set slider value to zoom value*/);
+    $slider.slider('option', 'max', 5);
+    $slider.slider('option', 'step', 0.1);
+    $slider.slider('option', 'change', zoomToolHandler);
+    $slider.slider('option', 'value', canvas.item(0).scaleX / canvas.item(0).newScaleX);
   });
   $contrastTool.click((e) => {
     $slider.slider('option', 'min', -100);
     $slider.slider('option', 'max', 100);
+    $slider.slider('option', 'step', 1);
     $slider.slider('option', 'change', contrastToolHandler);
     $slider.slider('option', 'value', filter(canvas.item(0), 0, 'contrast'));
   });
   $brightnessTool.click((e) => {
     $slider.slider('option', 'min', -100);
     $slider.slider('option', 'max', 100);
+    $slider.slider('option', 'step', 1);
     $slider.slider('option', 'change', brightnessToolHandler);
     $slider.slider('option', 'value', filter(canvas.item(0), 1, 'brightness'));
   });
