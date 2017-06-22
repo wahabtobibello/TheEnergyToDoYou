@@ -15,8 +15,9 @@
   const $shareModal = $("#share-modal");
   const $slider = $("#slider");
   const $tool = $("#tools span");
-  const $zoomTool = $("#zoomTool");
-  const $contrastTool = $("#contrastTool");
+  const $zoomTool = $("#zoom-tool");
+  const $brightnessTool = $("#brightness-tool");
+  const $contrastTool = $("#contrast-tool");
   const canvas = new fabric.Canvas('image-canvas', {
     width: 846,
     height: 846
@@ -145,7 +146,6 @@
 
     canvas.clear();
     canvas.defaultCursor = "default";
-
     canvas.add(imageObj);
     if (imageObj.width <= imageObj.height) {
       imageObj.scaleToWidth(imageObj.canvas.width);
@@ -155,6 +155,9 @@
     }
     imageObj.filters.push(new fabric.Image.filters.Contrast({
       contrast: 0
+    }));
+    imageObj.filters.push(new fabric.Image.filters.Brightness({
+      brightness: 0
     }));
     imageObj.applyFilters(canvas.renderAll.bind(canvas));
 
@@ -173,11 +176,6 @@
       onChange: canvas.renderAll.bind(canvas),
       ease: "easeOutSine"
     });
-    $addPhotoOnly.hide();
-    $moreOptions.show();
-
-    $slider.slider('option', 'slide', contrastToolHandler);
-    $slider.slider('option', 'change', contrastToolHandler); 
   };
   const startUp = (canvas) => {
     canvas.clear();
@@ -213,7 +211,8 @@
       imageObj.applyFilters(canvas.renderAll.bind(canvas));
     }
   }
-  const contrastToolHandler = () => { filter(canvas.item(0), 0, 'contrast', $slider.slider('value')) };  
+  const contrastToolHandler = () => { filter(canvas.item(0), 0, 'contrast', $slider.slider('value')) };
+  const brightnessToolHandler = () => { filter(canvas.item(0), 1, 'brightness', $slider.slider('value'))};
   startUp(canvas);
   canvas.on('mouse:down', (e) => {
     for (let i = 0; i < canvas.size(); i++) {
@@ -280,6 +279,10 @@
     img.src = u;
     img.onload = function () {
       renderImage(canvas, img);
+      $addPhotoOnly.hide();
+      $moreOptions.show();
+      $contrastTool.css('color', lucozadeRed);
+      $contrastTool.click();
     };
   });
   $saveLinkBtn.click((e) => {
@@ -302,30 +305,28 @@
   });
   $slider.slider({
     orientation: "horizontal",
-    min: -100,
-    max: 100,
-    value: 0,
   });
-  $contrastTool.css('color', lucozadeRed);
-  $slider.slider('option', 'value', 0);
   $tool.click((e) => {
     $tool.css('color', defaultBlack);
-  })
+    $(e.target).css('color', lucozadeRed);
+  });
   $zoomTool.click((e) => {
-    e.target.style.color = lucozadeRed;
     $slider.slider('option', 'min', 1);
     $slider.slider('option', 'max', 3);
-    $slider.slider('option', 'slide', () => { });
     $slider.slider('option', 'change', () => { });
     $slider.slider('option', 'value', 0 /*set slider value to zoom value*/);
-  })
+  });
   $contrastTool.click((e) => {
-    $contrastTool.css('color', lucozadeRed);
     $slider.slider('option', 'min', -100);
     $slider.slider('option', 'max', 100);
+    $slider.slider('option', 'change', contrastToolHandler);
     $slider.slider('option', 'value', filter(canvas.item(0), 0, 'contrast'));
-    $slider.slider('option', 'slide', contrastToolHandler);
-    $slider.slider('option', 'change', contrastToolHandler); 
-  })
+  });
+  $brightnessTool.click((e) => {
+    $slider.slider('option', 'min', -100);
+    $slider.slider('option', 'max', 100);
+    $slider.slider('option', 'change', brightnessToolHandler);
+    $slider.slider('option', 'value', filter(canvas.item(0), 1, 'brightness'));
+  });
 }(fabric, jQuery));
 
