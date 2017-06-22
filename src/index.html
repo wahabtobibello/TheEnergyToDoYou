@@ -16,6 +16,25 @@
 </head>
 
 <body>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1465665110174226',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v2.9'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
     <div class="wrapper">
         <section class="header landing">
             <div id="logo">
@@ -69,9 +88,9 @@
             </div>
             <div id="share-modal">
                 <div class="modal-inner">
-                    <a href="#" id="facebook-share" >
+                    <button id="facebook-share" style="border: none;">
                     <i class="fa fa-facebook-square" aria-hidden="true"></i>
-                </a>
+                    </button>
                     <a href="#" id="instagram-share">
                     <i class="fa fa-instagram" aria-hidden="true"></i>
                 </a>
