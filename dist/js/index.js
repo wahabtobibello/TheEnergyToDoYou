@@ -46001,6 +46001,8 @@ if (typeof module !== "undefined" && module.exports) {
     } else if (imageObj.width > imageObj.height) {
       imageObj.scaleToHeight(imageObj.canvas.height);
     }
+    imageObj.newScaleX = imageObj.scaleX;
+    imageObj.newScaleY = imageObj.scaleY;
     imageObj.filters.push(new fabric.Image.filters.Contrast({
       contrast: 0
     }));
@@ -46059,11 +46061,42 @@ if (typeof module !== "undefined" && module.exports) {
       imageObj.applyFilters(canvas.renderAll.bind(canvas));
     }
   };
+  var zoomToolHandler = function zoomToolHandler() {
+    var imageObj = canvas.item(0);
+    var value = $slider.slider('value');
+    imageObj.setScaleX(imageObj.newScaleX * value);
+    imageObj.setScaleY(imageObj.newScaleY * value);
+    rePositionImage(canvas, imageObj);
+    canvas.renderAll();
+  };
   var contrastToolHandler = function contrastToolHandler() {
     filter(canvas.item(0), 0, 'contrast', $slider.slider('value'));
   };
   var brightnessToolHandler = function brightnessToolHandler() {
     filter(canvas.item(0), 1, 'brightness', $slider.slider('value'));
+  };
+  var rePositionImage = function rePositionImage(canvas, imageObj) {
+    var tlX = imageObj.aCoords.tl.x;
+    var tlY = imageObj.aCoords.tl.y;
+    var brX = imageObj.aCoords.br.x;
+    var brY = imageObj.aCoords.br.y;
+    var canvasWidth = canvas.width;
+    var canvasHeight = canvas.height;
+    var currentWidth = imageObj.width * imageObj.scaleX;
+    var currentHeight = imageObj.height * imageObj.scaleY;
+    if (tlX >= 0) {
+      imageObj.setLeft(currentWidth / 2);
+    }
+    if (tlY >= 0) {
+      imageObj.setTop(currentHeight / 2);
+    }
+    if (brX <= canvasWidth) {
+      imageObj.setLeft(canvasWidth - currentWidth / 2);
+    }
+    if (brY <= canvasHeight) {
+      imageObj.setTop(canvasHeight - currentHeight / 2);
+    }
+    imageObj.setCoords();
   };
   startUp(canvas);
   canvas.on('mouse:down', function (e) {
@@ -46079,27 +46112,7 @@ if (typeof module !== "undefined" && module.exports) {
   canvas.on('mouse:up', function (e) {
     var activeObject = e.target;
     if (activeObject && activeObject.type === "image") {
-      var tlX = activeObject.aCoords.tl.x;
-      var tlY = activeObject.aCoords.tl.y;
-      var brX = activeObject.aCoords.br.x;
-      var brY = activeObject.aCoords.br.y;
-      var canvasWidth = canvas.width;
-      var canvasHeight = canvas.height;
-      var currentWidth = activeObject.width * activeObject.scaleX;
-      var currentHeight = activeObject.height * activeObject.scaleY;
-      if (tlX > 0) {
-        activeObject.setLeft(currentWidth / 2);
-      }
-      if (tlY > 0) {
-        activeObject.setTop(currentHeight / 2);
-      }
-      if (brX < canvasWidth) {
-        activeObject.setLeft(canvasWidth - currentWidth / 2);
-      }
-      if (brY < canvasHeight) {
-        activeObject.setTop(canvasHeight - currentHeight / 2);
-      }
-      activeObject.setCoords();
+      rePositionImage(canvas, activeObject);
     } else {
       initializeTextbox(getObjectWithType(canvas, "textbox"));
     }
@@ -46164,19 +46177,22 @@ if (typeof module !== "undefined" && module.exports) {
   });
   $zoomTool.click(function (e) {
     $slider.slider('option', 'min', 1);
-    $slider.slider('option', 'max', 3);
-    $slider.slider('option', 'change', function () {});
-    $slider.slider('option', 'value', 0 /*set slider value to zoom value*/);
+    $slider.slider('option', 'max', 5);
+    $slider.slider('option', 'step', 0.1);
+    $slider.slider('option', 'change', zoomToolHandler);
+    $slider.slider('option', 'value', canvas.item(0).scaleX / canvas.item(0).newScaleX);
   });
   $contrastTool.click(function (e) {
     $slider.slider('option', 'min', -100);
     $slider.slider('option', 'max', 100);
+    $slider.slider('option', 'step', 1);
     $slider.slider('option', 'change', contrastToolHandler);
     $slider.slider('option', 'value', filter(canvas.item(0), 0, 'contrast'));
   });
   $brightnessTool.click(function (e) {
     $slider.slider('option', 'min', -100);
     $slider.slider('option', 'max', 100);
+    $slider.slider('option', 'step', 1);
     $slider.slider('option', 'change', brightnessToolHandler);
     $slider.slider('option', 'value', filter(canvas.item(0), 1, 'brightness'));
   });
