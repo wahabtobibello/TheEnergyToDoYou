@@ -11,7 +11,26 @@
 </head>
 
 <body>
-     <div class="wrapper">
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1465665110174226',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v2.9'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div class="wrapper">
         <section class="header landing">
             <div id="logo">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 382 108">
@@ -62,14 +81,14 @@
             <div id="down-dir">
                 <a href="#gallery"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
             </div>
-            <div id="share-modal">
+            <div id="share-modal" style="display: none;">
                 <div class="modal-inner">
-                    <a href="#" id="facebook-share" >
+                    <a id="facebook-share">
                     <i class="fa fa-facebook-square" aria-hidden="true"></i>
-                </a>
-                    <a href="#" id="instagram-share">
+                    </a>
+                    <!--<a href="#" id="instagram-share">
                     <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
+                </a>-->
                     <a href="#" id="twitter-share">
                     <i class="fa fa-twitter-square" aria-hidden="true"></i>
                 </a>
