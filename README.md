@@ -1,7 +1,7 @@
 # lucozade-energy-to-do
 ## TO-DO
 1. do without bootstrap
-2. add zoom tool
+2. add zoom tool [done]
 
 Click [here][1] to go to production server
 
