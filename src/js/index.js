@@ -56,6 +56,7 @@
   }
   const editFontSize = (parent, iText, size) => {
     if (size > 0)
+      iText.scaleRatio = size;
       iText.scaleToHeight(parent.height / size);
   }
   const initializeTextbox = (textbox) => {
@@ -99,10 +100,10 @@
       canvas.renderAll();
     };
   };
-  const addClipArt = (parent, clipArtObj, iText) => {
+  const addClipArt = (parent, clipArtObj, iText, textScaleRatio) => {
     clipArtObj.scaleToHeight(parent.height);
     clipArtObj.scaleToWidth(parent.width);
-    editFontSize(parent, iText, 4)
+    editFontSize(parent, iText, textScaleRatio);
     parent.add(clipArtObj);
     parent.add(iText);
   };
@@ -117,7 +118,9 @@
   }
   const renderImage = (canvas, img) => {
     let clipArtObj = getObjectWithType(canvas, "path-group");
-    let inputText = getObjectWithType(canvas, "textbox").getText();
+    let textboxObj = getObjectWithType(canvas, "textbox");
+    let inputText = textboxObj.getText();
+    let scaleRatio = textboxObj.scaleRatio;
     let textObj = new fabric.Text(inputText, {
       left: 9,
       top: 312,
@@ -175,7 +178,7 @@
     imageObj.applyFilters(canvas.renderAll.bind(canvas));
 
     canvas.add(groupObj);
-    addClipArt(groupObj, clipArtObj, textObj);
+    addClipArt(groupObj, clipArtObj, textObj, scaleRatio);
     clipArtObj.setLeft(0);
     clipArtObj.setTop(0);
     canvas.sendToBack(imageObj);
@@ -213,10 +216,11 @@
         skewY: -10,
         top: 735,
         left: 432,
+        scaleRatio: 4,
       });
       clipArtObj.setTop(423);
       clipArtObj.setLeft(423);
-      addClipArt(canvas, clipArtObj, textbox);
+      addClipArt(canvas, clipArtObj, textbox, 4);
       initializeTextbox(textbox);
     });
   };
