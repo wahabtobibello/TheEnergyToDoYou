@@ -72,6 +72,9 @@ body, button {
 #slider, #tools{
     margin-bottom: 20px;
 }
+#slider{
+    margin: auto;
+}
 #tools span{
     margin-right: 20px;
 }
