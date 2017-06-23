@@ -13,9 +13,6 @@
   const $shareBtn = $('#shareBtn');
   const $fileInput = $("#file-input");
   const $shareModal = $("#share-modal");
-  const $facebookShare = $("#facebook-share");
-  const $twitterShare = $("#twitter-share");
-  const $instagramShare = $("#instagram-share");
   const $slider = $("#slider");
   const $tool = $("#tools span");
   const $zoomTool = $("#zoom-tool");
