@@ -18,11 +18,11 @@
   const $zoomTool = $("#zoom-tool");
   const $brightnessTool = $("#brightness-tool");
   const $contrastTool = $("#contrast-tool");
+  const $loading = $('#loading span');
   const canvas = new fabric.Canvas('image-canvas', {
     width: 846,
     height: 846
   });
-
   const renderClipArtAndTextbox = new Promise((resolve, reject) => {
     fabric.loadSVGFromURL('./img/the-energy-to.svg', function (objects, options) {
       let clipArtObj = fabric.util.groupSVGElements(objects, options);
@@ -36,6 +36,7 @@
       resolve(clipArtObj);
     }, () => { });
   });
+
   const convertCanvasToImage = canvas => {
     let image = new Image();
     image.src = canvas.toDataURL("image/png");
@@ -165,18 +166,23 @@
     addClipArt(groupObj, clipArtObj, textObj);
     clipArtObj.setLeft(0);
     clipArtObj.setTop(0);
-
     canvas.sendToBack(imageObj);
-    groupObj.animate("scaleX", groupObj.scaleX / 1.5, {
-      duration: 700,
+    return new Promise((resolve) => {
+      resolve(true);
+    });
+  };
+  const animateScaleDown = (obj, scale) => {
+    obj.animate("scaleX", obj.scaleX * scale, {
+      duration: 1000,
       onChange: canvas.renderAll.bind(canvas),
       ease: "easeOutSine"
-    }).animate("scaleY", groupObj.scaleY / 1.5, {
-      duration: 700,
+    }).animate("scaleY", obj.scaleY * scale, {
+      duration: 1000,
       onChange: canvas.renderAll.bind(canvas),
       ease: "easeOutSine"
     });
-  };
+    return true;
+  }
   const startUp = (canvas) => {
     canvas.clear();
     renderClipArtAndTextbox.then((clipArtObj) => {
@@ -290,12 +296,17 @@
     let img = new Image;
     img.src = u;
     img.onload = function () {
-      renderImage(canvas, img);
-      $addPhotoOnly.hide();
-      $moreOptions.show();
-      $contrastTool.css('color', lucozadeRed);
-      $contrastTool.click();
+      renderImage(canvas, img).then((done) => {
+        $loading.css('z-index', '0');
+        $loading.hide();
+        $addPhotoOnly.hide();
+        $moreOptions.show();
+        $contrastTool.css('color', lucozadeRed).click();
+        animateScaleDown(canvas.item(1), 0.6);
+      });
     };
+    $loading.css('z-index', '2');
+    $loading.show();
   });
   $saveLinkBtn.click((e) => {
     saveAsCanvas(canvas.getElement());
@@ -332,14 +343,14 @@
   $contrastTool.click((e) => {
     $slider.slider('option', 'min', -100);
     $slider.slider('option', 'max', 100);
-    $slider.slider('option', 'step', 1);
+    $slider.slider('option', 'step', 10);
     $slider.slider('option', 'change', contrastToolHandler);
     $slider.slider('option', 'value', filter(canvas.item(0), 0, 'contrast'));
   });
   $brightnessTool.click((e) => {
     $slider.slider('option', 'min', -100);
     $slider.slider('option', 'max', 100);
-    $slider.slider('option', 'step', 1);
+    $slider.slider('option', 'step', 10);
     $slider.slider('option', 'change', brightnessToolHandler);
     $slider.slider('option', 'value', filter(canvas.item(0), 1, 'brightness'));
   });
