@@ -45856,7 +45856,7 @@ if (typeof module !== "undefined" && module.exports) {
   });
 }
 
-'use strict';
+"use strict";
 
 var Base64Binary = {
   _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
@@ -45908,8 +45908,73 @@ var Base64Binary = {
     return uarray;
   }
 };
+// $ = jquery object;
+// canvas = HTMLCanvasElement
+var share2social = function share2social($, canvas) {
+  var $facebookShare = $("#facebook-share");
+  var $twitterShare = $("#twitter-share");
+  var $instagramShare = $("#instagram-share");
+  var postImageToFacebook = function postImageToFacebook(authToken, filename, mimeType, imageData) {
+    // this is the multipart/form-data boundary we'll use
+    var boundary = '----ThisIsTheBoundary1234567890';
+    // let's encode our image file, which is contained in the var
+    var formData = '--' + boundary + '\r\n';
+    formData += 'Content-Disposition: form-data; name="source"; filename="' + filename + '"\r\n';
+    formData += 'Content-Type: ' + mimeType + '\r\n\r\n';
+    for (var i = 0; i < imageData.length; ++i) {
+      formData += String.fromCharCode(imageData[i] & 0xff);
+    }
+    formData += '\r\n';
+    formData += '--' + boundary + '--\r\n';
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://graph.facebook.com/me/photos?access_token=' + authToken, true);
+    xhr.onload = xhr.onerror = function () {
+      console.log(xhr.responseText);
+      alert("Sent to Facebook!");
+    };
+    xhr.setRequestHeader("Content-Type", "multipart/form-data; boundary=" + boundary);
+    xhr.sendAsBinary(formData);
+  };
+  if (XMLHttpRequest.prototype.sendAsBinary === undefined) {
+    XMLHttpRequest.prototype.sendAsBinary = function (string) {
+      var bytes = Array.prototype.map.call(string, function (c) {
+        return c.charCodeAt(0) & 0xff;
+      });
+      this.send(new Uint8Array(bytes).buffer);
+    };
+  };
+  $(document).on("click", "#facebook-share", function (e) {
+    // TODO: Implement facebook share
+    var data = canvas.toDataURL("image/png");
+    var encodedPng = data.substring(data.indexOf(',') + 1, data.length);
+    var decodedPng = Base64Binary.decode(encodedPng);
+    FB.getLoginStatus(function (response) {
+      if (response.status === "connected") {
+        postImageToFacebook(response.authResponse.accessToken, "The Energy To Do You", "image/png", decodedPng, "#TheEnergyToDoYou");
+      } else if (response.status === "not_authorized") {
+        FB.login(function (response) {
+          postImageToFacebook(response.authResponse.accessToken, "The Energy To Do You", "image/png", decodedPng, "#TheEnergyToDoYou");
+        }, { scope: "publish_actions" });
+      } else {
+        FB.login(function (response) {
+          postImageToFacebook(response.authResponse.accessToken, "The Energy To Do You", "image/png", decodedPng, "#TheEnergyToDoYou");
+        }, { scope: "publish_actions" });
+      }
+    });
+  });
+  $(document).on("click", "#twitter-share", function (event) {
+    // TODO: Implement twitter share
+  });
+  $(document).on("click", "#instagram-share", function (event) {
+    // TODO: Implement instagram share
+  });
+};
+'use strict';
+
 (function (fabric, $) {
-  var maxchars = 10;
+
+  var maxchars = 6;
   var defaultBlack = "#292b2c";
   var lucozadeRed = "#E5003B";
   var $addPhotoOnly = $('#addPhotoOnly');
@@ -45933,6 +45998,7 @@ var Base64Binary = {
     width: 846,
     height: 846
   });
+
   var renderClipArtAndTextbox = new Promise(function (resolve, reject) {
     fabric.loadSVGFromURL('./img/the-energy-to.svg', function (objects, options) {
       var clipArtObj = fabric.util.groupSVGElements(objects, options);
@@ -46151,37 +46217,6 @@ var Base64Binary = {
     }
     imageObj.setCoords();
   };
-  var postImageToFacebook = function postImageToFacebook(authToken, filename, mimeType, imageData) {
-    // this is the multipart/form-data boundary we'll use
-    var boundary = '----ThisIsTheBoundary1234567890';
-    // let's encode our image file, which is contained in the var
-    var formData = '--' + boundary + '\r\n';
-    formData += 'Content-Disposition: form-data; name="source"; filename="' + filename + '"\r\n';
-    formData += 'Content-Type: ' + mimeType + '\r\n\r\n';
-    for (var i = 0; i < imageData.length; ++i) {
-      formData += String.fromCharCode(imageData[i] & 0xff);
-    }
-    formData += '\r\n';
-    formData += '--' + boundary + '--\r\n';
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://graph.facebook.com/me/photos?access_token=' + authToken, true);
-    xhr.onload = xhr.onerror = function () {
-      console.log(xhr.responseText);
-      alert("Sent to Facebook!");
-    };
-    xhr.setRequestHeader("Content-Type", "multipart/form-data; boundary=" + boundary);
-    xhr.sendAsBinary(formData);
-  };
-  var dataURItoBlob = function dataURItoBlob(dataURI) {
-    var byteString = atob(dataURI.split(',')[1]);
-    var ab = new ArrayBuffer(byteString.length);
-    var ia = new Uint8Array(ab);
-    for (var i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([ab], { type: 'image/png' });
-  };
   startUp(canvas);
   canvas.on('mouse:down', function (e) {
     for (var i = 0; i < canvas.size(); i++) {
@@ -46252,31 +46287,6 @@ var Base64Binary = {
     autoOpen: false,
     closeButton: true
   });
-  $(document).on("click", "#facebook-share", function (e) {
-    // TODO: Implement facebook share
-    var data = canvas.toDataURL("image/png");
-    var encodedPng = data.substring(data.indexOf(',') + 1, data.length);
-    var decodedPng = Base64Binary.decode(encodedPng);
-    FB.getLoginStatus(function (response) {
-      if (response.status === "connected") {
-        postImageToFacebook(response.authResponse.accessToken, "The Energy To Do You", "image/png", decodedPng, "#TheEnergyToDoYou");
-      } else if (response.status === "not_authorized") {
-        FB.login(function (response) {
-          postImageToFacebook(response.authResponse.accessToken, "The Energy To Do You", "image/png", decodedPng, "#TheEnergyToDoYou");
-        }, { scope: "publish_actions" });
-      } else {
-        FB.login(function (response) {
-          postImageToFacebook(response.authResponse.accessToken, "The Energy To Do You", "image/png", decodedPng, "#TheEnergyToDoYou");
-        }, { scope: "publish_actions" });
-      }
-    });
-  });
-  $(document).on("click", "#twitter-share", function (event) {
-    // TODO: Implement twitter share
-  });
-  $(document).on("click", "#instagram-share", function (event) {
-    // TODO: Implement instagram share
-  });
   $slider.slider({
     orientation: "horizontal"
   });
@@ -46305,12 +46315,5 @@ var Base64Binary = {
     $slider.slider('option', 'change', brightnessToolHandler);
     $slider.slider('option', 'value', filter(canvas.item(0), 1, 'brightness'));
   });
-  if (XMLHttpRequest.prototype.sendAsBinary === undefined) {
-    XMLHttpRequest.prototype.sendAsBinary = function (string) {
-      var bytes = Array.prototype.map.call(string, function (c) {
-        return c.charCodeAt(0) & 0xff;
-      });
-      this.send(new Uint8Array(bytes).buffer);
-    };
-  };
+  share2social($, canvas.getElement());
 })(fabric, jQuery);
