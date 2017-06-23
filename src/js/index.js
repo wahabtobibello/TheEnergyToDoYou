@@ -1,8 +1,7 @@
 'use strict';
 (function (fabric, $) {
 
-  /***************************Constants****************************/
-  const maxchars = 10;
+  const maxchars = 6;
   const defaultBlack = "#292b2c";
   const lucozadeRed = "#E5003B";
   const $addPhotoOnly = $('#addPhotoOnly');
@@ -27,7 +26,6 @@
     height: 846
   });
 
-  /***************************Constants****************************/
   const renderClipArtAndTextbox = new Promise((resolve, reject) => {
     fabric.loadSVGFromURL('./img/the-energy-to.svg', function (objects, options) {
       let clipArtObj = fabric.util.groupSVGElements(objects, options);
