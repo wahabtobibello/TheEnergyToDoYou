@@ -45986,19 +45986,16 @@ var share2social = function share2social($, canvas) {
   var $shareBtn = $('#shareBtn');
   var $fileInput = $("#file-input");
   var $shareModal = $("#share-modal");
-  var $facebookShare = $("#facebook-share");
-  var $twitterShare = $("#twitter-share");
-  var $instagramShare = $("#instagram-share");
   var $slider = $("#slider");
   var $tool = $("#tools span");
   var $zoomTool = $("#zoom-tool");
   var $brightnessTool = $("#brightness-tool");
   var $contrastTool = $("#contrast-tool");
+  var $loading = $('#loading span');
   var canvas = new fabric.Canvas('image-canvas', {
     width: 846,
     height: 846
   });
-
   var renderClipArtAndTextbox = new Promise(function (resolve, reject) {
     fabric.loadSVGFromURL('./img/the-energy-to.svg', function (objects, options) {
       var clipArtObj = fabric.util.groupSVGElements(objects, options);
@@ -46012,6 +46009,7 @@ var share2social = function share2social($, canvas) {
       resolve(clipArtObj);
     }, function () {});
   });
+
   var convertCanvasToImage = function convertCanvasToImage(canvas) {
     var image = new Image();
     image.src = canvas.toDataURL("image/png");
@@ -46133,17 +46131,22 @@ var share2social = function share2social($, canvas) {
     addClipArt(groupObj, clipArtObj, textObj);
     clipArtObj.setLeft(0);
     clipArtObj.setTop(0);
-
     canvas.sendToBack(imageObj);
-    groupObj.animate("scaleX", groupObj.scaleX / 1.5, {
-      duration: 700,
+    return new Promise(function (resolve) {
+      resolve(true);
+    });
+  };
+  var animateScaleDown = function animateScaleDown(obj, scale) {
+    obj.animate("scaleX", obj.scaleX * scale, {
+      duration: 1000,
       onChange: canvas.renderAll.bind(canvas),
       ease: "easeOutSine"
-    }).animate("scaleY", groupObj.scaleY / 1.5, {
-      duration: 700,
+    }).animate("scaleY", obj.scaleY * scale, {
+      duration: 1000,
       onChange: canvas.renderAll.bind(canvas),
       ease: "easeOutSine"
     });
+    return true;
   };
   var startUp = function startUp(canvas) {
     canvas.clear();
@@ -46262,12 +46265,17 @@ var share2social = function share2social($, canvas) {
     var img = new Image();
     img.src = u;
     img.onload = function () {
-      renderImage(canvas, img);
-      $addPhotoOnly.hide();
-      $moreOptions.show();
-      $contrastTool.css('color', lucozadeRed);
-      $contrastTool.click();
+      renderImage(canvas, img).then(function (done) {
+        $loading.css('z-index', '0');
+        $loading.hide();
+        $addPhotoOnly.hide();
+        $moreOptions.show();
+        $contrastTool.css('color', lucozadeRed).click();
+        animateScaleDown(canvas.item(1), 0.6);
+      });
     };
+    $loading.css('z-index', '2');
+    $loading.show();
   });
   $saveLinkBtn.click(function (e) {
     saveAsCanvas(canvas.getElement());
@@ -46304,14 +46312,14 @@ var share2social = function share2social($, canvas) {
   $contrastTool.click(function (e) {
     $slider.slider('option', 'min', -100);
     $slider.slider('option', 'max', 100);
-    $slider.slider('option', 'step', 1);
+    $slider.slider('option', 'step', 10);
     $slider.slider('option', 'change', contrastToolHandler);
     $slider.slider('option', 'value', filter(canvas.item(0), 0, 'contrast'));
   });
   $brightnessTool.click(function (e) {
     $slider.slider('option', 'min', -100);
     $slider.slider('option', 'max', 100);
-    $slider.slider('option', 'step', 1);
+    $slider.slider('option', 'step', 10);
     $slider.slider('option', 'change', brightnessToolHandler);
     $slider.slider('option', 'value', filter(canvas.item(0), 1, 'brightness'));
   });
