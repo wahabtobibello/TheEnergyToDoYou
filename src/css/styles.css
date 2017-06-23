@@ -69,11 +69,11 @@ body, button {
 #addPhotoOnly button, #slider{
     width: 433px;
 }
-#slider, #tools{
+#tools{
     margin-bottom: 20px;
 }
 #slider{
-    margin: auto;
+    margin: 0 auto 20px;
 }
 #tools span{
     margin-right: 20px;
