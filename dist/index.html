@@ -44,8 +44,14 @@
                 </svg>
             </div>
             <div id="studio">
-                <div id="canvas-outer">
-                    <canvas id="image-canvas"></canvas>
+                <div id="view">
+                    <div id="canvas-outer">
+                        <canvas id="image-canvas"></canvas>
+                    </div>
+                    <div id="loading">
+                        <span><i class="fa fa-refresh fa-spin fa-5x fa-fw"></i></span>
+                        <span class="sr-only">Loading...</span>
+                    </div>
                 </div>
                 <div id="controls">
                     <input type="file" style="display:none" id="file-input">
