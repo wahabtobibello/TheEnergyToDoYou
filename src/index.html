@@ -61,9 +61,9 @@
                 <div id="controls">
                     <input type="file" style="display:none" id="file-input">
                     <div id="addPhotoOnly" style="display:none">
-                        <button id="addPhoto" class="btn lucozade-red"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add
-                        Photo
-                    </button>
+                        <button id="choose-photo" class="btn lucozade-red"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add
+                            Photo
+                        </button>
                     </div>
                     <div id="moreOptions" style="display:none">
                         <div>
@@ -104,6 +104,22 @@
                     <i class="fa fa-twitter-square" aria-hidden="true"></i>
                 </a>
                 </div>
+            </div>
+            <div id="choose-photo-modal" style="display: none;">
+                <section class="default-images">
+                    <ul class="row">
+                        <li id="1B" class="col-lg-3 col-md-4 col-sm-6 selected"><img src="./img/lucozade-background/1B.png" /></li>
+                        <li id="2B" class="col-lg-3 col-md-4 col-sm-6"><img src="./img/lucozade-background/2B.png" /></li>
+                        <li id="3B" class="col-lg-3 col-md-4 col-sm-6"><img src="./img/lucozade-background/3B.png" /></li>
+                        <li id="4B" class="col-lg-3 col-md-4 col-sm-6"><img src="./img/lucozade-background/4B.png" /></li>
+                        <li id="5B" class="col-lg-3 col-md-4 col-sm-6"><img src="./img/lucozade-background/5B.png" /></li>
+                    </ul>
+                </section>
+                <footer>
+                    <button id="add-photo" class="btn btn-default">Ok</button>
+                    <button class="btn btn-danger" data-izimodal-close>Cancel</button>
+                    <button id="add-my-photo" class="btn lucozade-red">My Photos</button>
+                </footer>
             </div>
         </section>
         <section id="gallery" class="gallery">
