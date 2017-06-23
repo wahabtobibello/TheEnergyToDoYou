@@ -52,7 +52,7 @@ var Base64Binary = {
     return uarray;
   }
 };
-(function (fabric, $) {
+(function (fabric, $, Base64Binary) {
   const maxchars = 10;
   const defaultBlack = "#292b2c";
   const lucozadeRed = "#E5003B";
@@ -321,15 +321,6 @@ var Base64Binary = {
     xhr.setRequestHeader("Content-Type", "multipart/form-data; boundary=" + boundary);
     xhr.sendAsBinary(formData);
   };
-  const dataURItoBlob = (dataURI) => {
-    var byteString = atob(dataURI.split(',')[1]);
-    var ab = new ArrayBuffer(byteString.length);
-    var ia = new Uint8Array(ab);
-    for (var i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([ab], { type: 'image/png' });
-  };
   startUp(canvas);
   canvas.on('mouse:down', (e) => {
     for (let i = 0; i < canvas.size(); i++) {
@@ -462,5 +453,5 @@ var Base64Binary = {
       this.send(new Uint8Array(bytes).buffer);
     };
   };
-}(fabric, jQuery));
+}(fabric, jQuery, Base64Binary));
 
