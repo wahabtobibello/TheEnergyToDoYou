@@ -45970,11 +45970,12 @@ var share2social = function share2social($, canvas) {
     // TODO: Implement instagram share
   });
 };
-'use strict';
+"use strict";
 
 (function (fabric, $) {
+  'use strict';
 
-  var maxchars = 6;
+  var maxchars = 10;
   var defaultBlack = "#292b2c";
   var lucozadeRed = "#E5003B";
   var $addPhotoOnly = $('#addPhotoOnly');
@@ -46009,7 +46010,9 @@ var share2social = function share2social($, canvas) {
       resolve(clipArtObj);
     }, function () {});
   });
-
+  var getAdjustedScale = function getAdjustedScale(noOfChars) {
+    return (noOfChars - 1) * 0.6667 + 1;
+  };
   var convertCanvasToImage = function convertCanvasToImage(canvas) {
     var image = new Image();
     image.src = canvas.toDataURL("image/png");
@@ -46022,6 +46025,9 @@ var share2social = function share2social($, canvas) {
       }, "image/png");
     }
   };
+  var editFontSize = function editFontSize(parent, iText, size) {
+    if (size > 0) iText.scaleToHeight(parent.height / size);
+  };
   var initializeTextbox = function initializeTextbox(textbox) {
     canvas.setActiveObject(textbox);
     textbox.enterEditing();
@@ -46032,6 +46038,7 @@ var share2social = function share2social($, canvas) {
       var canvas = e.target.canvas;
       var textbox = getObjectWithType(canvas, 'textbox');
       var inputText = textbox.text;
+      var textLength = inputText.length;
       var upperCase = e.key;
       var charCode = upperCase.charCodeAt(0);
       if ($moreOptions.css('display') === "none") {
@@ -46050,13 +46057,18 @@ var share2social = function share2social($, canvas) {
       } else if (charCode >= 97 && charCode <= 122) {
         textbox.text = textbox.text.toUpperCase();
       }
+      if (textLength > 6) {
+        editFontSize(canvas, textbox, getAdjustedScale(textLength));
+      } else {
+        editFontSize(canvas, textbox, 4);
+      }
       canvas.renderAll();
     };
   };
   var addClipArt = function addClipArt(parent, clipArtObj, iText) {
     clipArtObj.scaleToHeight(parent.height);
     clipArtObj.scaleToWidth(parent.width);
-    iText.scaleToHeight(parent.height / 4);
+    editFontSize(parent, iText, 4);
     parent.add(clipArtObj);
     parent.add(iText);
   };
