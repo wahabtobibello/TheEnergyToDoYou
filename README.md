@@ -6,7 +6,6 @@
   2. instagram
 3. decrease textbox weight with increasing text length from 6-10
 4. water-mark lucozade
-5. loading widget
 
 Click [here][1] to go to production server
 
