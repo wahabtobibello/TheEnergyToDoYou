@@ -4,6 +4,7 @@
 2. share button
   1. twitter
   2. instagram
+3. use facebook ui
 
 Click [here][1] to go to production server
 
