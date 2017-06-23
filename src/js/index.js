@@ -1,7 +1,7 @@
-'use strict';
 (function (fabric, $) {
+  'use strict';
 
-  const maxchars = 6;
+  const maxchars = 10;
   const defaultBlack = "#292b2c";
   const lucozadeRed = "#E5003B";
   const $addPhotoOnly = $('#addPhotoOnly');
@@ -36,7 +36,9 @@
       resolve(clipArtObj);
     }, () => { });
   });
-
+  const getAdjustedScale = (noOfChars) => {
+    return (noOfChars - 1) * 0.6667 + 1;
+  }
   const convertCanvasToImage = canvas => {
     let image = new Image();
     image.src = canvas.toDataURL("image/png");
@@ -52,6 +54,10 @@
       }, "image/png");
     }
   }
+  const editFontSize = (parent, iText, size) => {
+    if (size > 0)
+      iText.scaleToHeight(parent.height / size);
+  }
   const initializeTextbox = (textbox) => {
     canvas.setActiveObject(textbox);
     textbox.enterEditing();
@@ -62,6 +68,7 @@
       let canvas = e.target.canvas;
       let textbox = getObjectWithType(canvas, 'textbox');
       let inputText = textbox.text;
+      let textLength = inputText.length;
       let upperCase = e.key;
       let charCode = upperCase.charCodeAt(0);
       if ($moreOptions.css('display') === "none") {
@@ -84,13 +91,18 @@
       } else if (charCode >= 97 && charCode <= 122) {
         textbox.text = textbox.text.toUpperCase();
       }
+      if (textLength > 6) {
+        editFontSize(canvas, textbox, getAdjustedScale(textLength));
+      } else {
+        editFontSize(canvas, textbox, 4);
+      }
       canvas.renderAll();
     };
   };
   const addClipArt = (parent, clipArtObj, iText) => {
     clipArtObj.scaleToHeight(parent.height);
     clipArtObj.scaleToWidth(parent.width);
-    iText.scaleToHeight(parent.height / 4);
+    editFontSize(parent, iText, 4)
     parent.add(clipArtObj);
     parent.add(iText);
   };
