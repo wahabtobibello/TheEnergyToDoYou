@@ -4,8 +4,7 @@
 2. share button
   1. twitter
   2. instagram
-3. decrease textbox weight with increasing text length from 6-10
-4. water-mark lucozade
+3. water-mark lucozade
 
 Click [here][1] to go to production server
 
