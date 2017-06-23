@@ -12,7 +12,10 @@ const gulp = require('gulp'),
 
 gulp.task("compileScripts", function () {
   return gulp
-    .src('./src/js/*.js')
+    .src([
+      './other_modules/share2social.js',
+      './src/js/index.js',
+    ])
     .pipe(babel({
       presets: ['env']
     }))
