@@ -13988,14 +13988,14 @@ body > textarea{
     }
 }
 
-.modal-inner {
+#share-modal .modal-inner {
     display: flex;
     justify-content: center;
 }
-.modal-inner a{
+#share-modal a{
     margin: 20px;
 }
-.modal-inner .fa{
+#share-modal .fa{
     font-size: 5rem;
     -webkit-transition: transform 0.5s;
     -moz-transition: transform 0.5s;
@@ -14003,7 +14003,7 @@ body > textarea{
     -o-transition: transform 0.5s;
     transition: transform 0.5s;
 }
-.modal-inner .fa:hover{
+#share-modal .fa:hover{
     transform: scale(1.1,1.1);
 }
 .fa-facebook-square{
@@ -14015,23 +14015,37 @@ body > textarea{
 .fa-instagram{
     color: #c13584;
 }
-
-.gallery {
+.gallery, .default-images {
     width: 100%;
 }
 
-.gallery ul {
+.gallery ul, .default-images ul {
     padding: 0;
     margin: 0;
 }
 
-.gallery li {
-    padding: 0;
-    margin: 0;
+.gallery li, .default-images li{
     list-style: none;
 }
-
-.gallery img {
-    width: 100%;
+.gallery li{
+    padding: 0;
+    margin: 0;
+}
+.default-images li{
+    padding: 0;
+    margin: 0;
+}
+#choose-photo-modal footer{
+    margin-top: 5px;
+}
+#add-my-photo{
+    float: right;
+}
+.gallery img, .default-images img {
+    width: 96%;
+    padding: 2%;
     overflow: hidden;
+}
+.selected{
+    border: 2px solid #E5003B;
 }

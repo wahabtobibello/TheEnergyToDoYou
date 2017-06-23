@@ -45983,10 +45983,13 @@ var share2social = function share2social($, canvas) {
       $saveLink = $('#saveLink'),
       $saveLinkBtn = $('#saveLinkBtn'),
       $startOver = $('#startOver'),
-      $addPhoto = $('#addPhoto'),
+      $choosePhoto = $('#choose-photo'),
+      $addPhoto = $('#add-photo'),
+      $addMyPhoto = $('#add-my-photo'),
       $shareBtn = $('#shareBtn'),
       $fileInput = $("#file-input"),
       $shareModal = $("#share-modal"),
+      $choosePhotoModal = $("#choose-photo-modal"),
       $slider = $("#slider"),
       $tool = $("#tools span"),
       $zoomTool = $("#zoom-tool"),
@@ -46288,6 +46291,7 @@ var share2social = function share2social($, canvas) {
         $moreOptions.show();
         $contrastTool.css('color', lucozadeRed).click();
         animateScaleDown(canvas.item(1), 0.6);
+        $choosePhotoModal.iziModal('close');
       });
     };
     $loading.css('z-index', '2');
@@ -46300,8 +46304,23 @@ var share2social = function share2social($, canvas) {
     startUp(canvas);
     $moreOptions.hide();
   });
-  $addPhoto.click(function (e) {
+  $choosePhoto.click(function (e) {
+    e.preventDefault();
+    $('#choose-photo-modal').iziModal('open');
+  });
+  $(document).on("click", "#add-my-photo", function (e) {
     $('#file-input').click();
+  });
+  $(document).on("click", "#add-photo", function (e) {
+    renderImage(canvas, $('.selected img')[0]).then(function (done) {
+      $loading.css('z-index', '0');
+      $loading.hide();
+      $addPhotoOnly.hide();
+      $moreOptions.show();
+      $contrastTool.css('color', lucozadeRed).click();
+      animateScaleDown(canvas.item(1), 0.6);
+      $choosePhotoModal.iziModal('close');
+    });
   });
   $shareBtn.click(function (e) {
     e.preventDefault();
@@ -46310,6 +46329,16 @@ var share2social = function share2social($, canvas) {
   $shareModal.iziModal({
     autoOpen: false,
     closeButton: true
+  });
+  $choosePhotoModal.iziModal({
+    title: "Pick your photo",
+    autoOpen: false,
+    headerColor: lucozadeRed,
+    width: 800,
+    top: 50,
+    bottom: 50,
+    padding: 20,
+    bodyOverflow: true
   });
   $slider.slider({
     orientation: "horizontal"
@@ -46338,6 +46367,10 @@ var share2social = function share2social($, canvas) {
     $slider.slider('option', 'step', 10);
     $slider.slider('option', 'change', brightnessToolHandler);
     $slider.slider('option', 'value', filter(canvas.item(0), 1, 'brightness'));
+  });
+  $(document).on("click", "#choose-photo-modal li", function (e) {
+    $("#choose-photo-modal li").removeClass('selected');
+    $(this).addClass('selected');
   });
   share2social($, canvas.getElement());
 })(fabric, jQuery);
