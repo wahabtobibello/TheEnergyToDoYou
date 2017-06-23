@@ -45975,29 +45975,29 @@ var share2social = function share2social($, canvas) {
 (function (fabric, $) {
   'use strict';
 
-  var maxchars = 10;
-  var defaultBlack = "#292b2c";
-  var lucozadeRed = "#E5003B";
-  var $addPhotoOnly = $('#addPhotoOnly');
-  var $moreOptions = $('#moreOptions');
-  var $saveLink = $('#saveLink');
-  var $saveLinkBtn = $('#saveLinkBtn');
-  var $startOver = $('#startOver');
-  var $addPhoto = $('#addPhoto');
-  var $shareBtn = $('#shareBtn');
-  var $fileInput = $("#file-input");
-  var $shareModal = $("#share-modal");
-  var $slider = $("#slider");
-  var $tool = $("#tools span");
-  var $zoomTool = $("#zoom-tool");
-  var $brightnessTool = $("#brightness-tool");
-  var $contrastTool = $("#contrast-tool");
-  var $loading = $('#loading span');
-  var canvas = new fabric.Canvas('image-canvas', {
+  var maxchars = 10,
+      defaultBlack = "#292b2c",
+      lucozadeRed = "#E5003B",
+      $addPhotoOnly = $('#addPhotoOnly'),
+      $moreOptions = $('#moreOptions'),
+      $saveLink = $('#saveLink'),
+      $saveLinkBtn = $('#saveLinkBtn'),
+      $startOver = $('#startOver'),
+      $addPhoto = $('#addPhoto'),
+      $shareBtn = $('#shareBtn'),
+      $fileInput = $("#file-input"),
+      $shareModal = $("#share-modal"),
+      $slider = $("#slider"),
+      $tool = $("#tools span"),
+      $zoomTool = $("#zoom-tool"),
+      $brightnessTool = $("#brightness-tool"),
+      $contrastTool = $("#contrast-tool"),
+      $loading = $('#loading span'),
+      canvas = new fabric.Canvas('image-canvas', {
     width: 846,
     height: 846
-  });
-  var renderClipArtAndTextbox = new Promise(function (resolve, reject) {
+  }),
+      renderClipArtAndTextbox = new Promise(function (resolve, reject) {
     fabric.loadSVGFromURL('./img/the-energy-to.svg', function (objects, options) {
       var clipArtObj = fabric.util.groupSVGElements(objects, options);
       clipArtObj.selectable = false;
@@ -46009,27 +46009,27 @@ var share2social = function share2social($, canvas) {
       clipArtObj.setOriginY("center");
       resolve(clipArtObj);
     }, function () {});
-  });
-  var getAdjustedScale = function getAdjustedScale(noOfChars) {
+  }),
+      getAdjustedScale = function getAdjustedScale(noOfChars) {
     return (noOfChars - 1) * 0.6667 + 1;
-  };
-  var convertCanvasToImage = function convertCanvasToImage(canvas) {
+  },
+      convertCanvasToImage = function convertCanvasToImage(canvas) {
     var image = new Image();
     image.src = canvas.toDataURL("image/png");
     return image;
-  };
-  var saveAsCanvas = function saveAsCanvas(canvas) {
+  },
+      saveAsCanvas = function saveAsCanvas(canvas) {
     if (saveAs !== undefined) {
       canvas.toBlobHD(function (blob) {
         saveAs(blob, "image.png");
       }, "image/png");
     }
-  };
-  var editFontSize = function editFontSize(parent, iText, size) {
+  },
+      editFontSize = function editFontSize(parent, iText, size) {
     if (size > 0) iText.scaleRatio = size;
     iText.scaleToHeight(parent.height / size);
-  };
-  var initializeTextbox = function initializeTextbox(textbox) {
+  },
+      initializeTextbox = function initializeTextbox(textbox) {
     canvas.setActiveObject(textbox);
     textbox.enterEditing();
     textbox.hiddenTextarea.canvas = canvas;
@@ -46065,15 +46065,15 @@ var share2social = function share2social($, canvas) {
       }
       canvas.renderAll();
     };
-  };
-  var addClipArt = function addClipArt(parent, clipArtObj, iText, textScaleRatio) {
+  },
+      addClipArt = function addClipArt(parent, clipArtObj, iText, textScaleRatio) {
     clipArtObj.scaleToHeight(parent.height);
     clipArtObj.scaleToWidth(parent.width);
     editFontSize(parent, iText, textScaleRatio);
     parent.add(clipArtObj);
     parent.add(iText);
-  };
-  var getObjectWithType = function getObjectWithType(canvas, type) {
+  },
+      getObjectWithType = function getObjectWithType(canvas, type) {
     for (var i = 0; i < canvas.size(); i++) {
       var item = canvas.item(i);
       if (item.type === type) {
@@ -46081,8 +46081,8 @@ var share2social = function share2social($, canvas) {
       }
     }
     return null;
-  };
-  var renderImage = function renderImage(canvas, img) {
+  },
+      renderImage = function renderImage(canvas, img) {
     var clipArtObj = getObjectWithType(canvas, "path-group");
     var textboxObj = getObjectWithType(canvas, "textbox");
     var inputText = textboxObj.getText();
@@ -46150,8 +46150,8 @@ var share2social = function share2social($, canvas) {
     return new Promise(function (resolve) {
       resolve(true);
     });
-  };
-  var animateScaleDown = function animateScaleDown(obj, scale) {
+  },
+      animateScaleDown = function animateScaleDown(obj, scale) {
     obj.animate("scaleX", obj.scaleX * scale, {
       duration: 1000,
       onChange: canvas.renderAll.bind(canvas),
@@ -46162,8 +46162,8 @@ var share2social = function share2social($, canvas) {
       ease: "easeOutSine"
     });
     return true;
-  };
-  var startUp = function startUp(canvas) {
+  },
+      startUp = function startUp(canvas) {
     canvas.clear();
     renderClipArtAndTextbox.then(function (clipArtObj) {
       var textbox = new fabric.Textbox("", {
@@ -46188,8 +46188,8 @@ var share2social = function share2social($, canvas) {
       addClipArt(canvas, clipArtObj, textbox, 4);
       initializeTextbox(textbox);
     });
-  };
-  var filter = function filter(imageObj, index, prop, value) {
+  },
+      filter = function filter(imageObj, index, prop, value) {
     if (value === undefined) {
       return imageObj.filters[index][prop];
     }
@@ -46197,8 +46197,8 @@ var share2social = function share2social($, canvas) {
       imageObj.filters[index][prop] = value;
       imageObj.applyFilters(canvas.renderAll.bind(canvas));
     }
-  };
-  var zoomToolHandler = function zoomToolHandler() {
+  },
+      zoomToolHandler = function zoomToolHandler() {
     var imageObj = canvas.item(0);
     var value = $slider.slider('value');
     imageObj.setScaleX(imageObj.newScaleX * value);
@@ -46206,14 +46206,14 @@ var share2social = function share2social($, canvas) {
     imageObj.setCoords();
     rePositionImage(canvas, imageObj);
     canvas.renderAll();
-  };
-  var contrastToolHandler = function contrastToolHandler() {
+  },
+      contrastToolHandler = function contrastToolHandler() {
     filter(canvas.item(0), 0, 'contrast', $slider.slider('value'));
-  };
-  var brightnessToolHandler = function brightnessToolHandler() {
+  },
+      brightnessToolHandler = function brightnessToolHandler() {
     filter(canvas.item(0), 1, 'brightness', $slider.slider('value'));
-  };
-  var rePositionImage = function rePositionImage(canvas, imageObj) {
+  },
+      rePositionImage = function rePositionImage(canvas, imageObj) {
     var tlX = imageObj.aCoords.tl.x;
     var tlY = imageObj.aCoords.tl.y;
     var brX = imageObj.aCoords.br.x;
