@@ -46626,7 +46626,7 @@ var share2social = function share2social($, canvas) {
     textbox.hiddenTextarea.onkeyup = function (e) {
       var canvas = e.target.canvas;
       var textbox = getObjectWithType(canvas, 'textbox');
-      var inputText = textbox.text;
+      var inputText = e.target.value;
       var textLength = inputText.length;
       var key = e.key || e.keyIdentifier;
       var lastCharCode = inputText.charCodeAt(textLength - 1);
@@ -46640,12 +46640,14 @@ var share2social = function share2social($, canvas) {
           $moreOptions.find('button').removeAttr('disabled');
         }
       }
-      if (e.key === "Enter") {
-        textbox.text = inputText.slice(0, inputText.length - 1);
+      if (key === "Enter") {
+        e.target.value = inputText.slice(0, inputText.length - 1);
+        textbox.text = e.target.value;
         $choosePhoto.click();
       }
       if (lastCharCode >= 97 && lastCharCode <= 122) {
-        textbox.text = inputText.toUpperCase();
+        e.target.value = inputText.toUpperCase();
+        textbox.text = e.target.value;
       }
       if (textLength > 6) {
         editFontSize(canvas, textbox, getAdjustedScale(textLength));
