@@ -13,7 +13,7 @@ const gulp = require('gulp'),
 gulp.task("compileScripts", function () {
   return gulp
     .src([
-      './other_modules/share2social.js',
+      './external/share2social.js',
       './src/js/index.js',
     ])
     .pipe(babel({
@@ -22,7 +22,6 @@ gulp.task("compileScripts", function () {
     .pipe(concat('index.js'))
     .pipe(gulp.dest('./dist/js'));
 });
-
 gulp.task("concatScripts", ["compileScripts"], function () {
   return gulp
     .src([
@@ -32,9 +31,11 @@ gulp.task("concatScripts", ["compileScripts"], function () {
       './node_modules/bootstrap/dist/js/bootstrap.js',
       './node_modules/fabric/dist/fabric.js',
       './node_modules/izimodal/js/iziModal.js',
-      './other_modules/Blob.js',
-      './other_modules/canvas-toBlob.js',
+      './external/Blob.js',
+      './external/canvas-toBlob.js',
       './node_modules/file-saver/FileSaver.js',
+      './external/jquery.plugin.js',
+      './external/jquery.maxlength.js',
       './dist/js/index.js',
     ])
     .on('error', function (err) { util.log(util.colors.red('[Error]'), err.toString()); })
