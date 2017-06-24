@@ -94,7 +94,7 @@
           $choosePhoto.click();
         }
         if (lastCharCode >= 97 && lastCharCode <= 122) {
-          e.target.value = textbox.text.toUpperCase();
+          textbox.text = inputText.toUpperCase();
         }
         if (textLength > 6) {
           editFontSize(canvas, textbox, getAdjustedScale(textLength));
