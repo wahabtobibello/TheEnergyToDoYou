@@ -26,7 +26,8 @@ gulp.task("concatScripts", ["compileScripts"], function () {
   return gulp
     .src([
       './node_modules/jquery/dist/jquery.js',
-      './jquery-ui-1.12.1.custom/jquery-ui.js',
+      './external/jquery-ui-1.12.1.custom/jquery-ui.js',
+      './external/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js',
       './node_modules/tether/dist/js/tether.js',
       './node_modules/bootstrap/dist/js/bootstrap.js',
       './node_modules/fabric/dist/fabric.js',
@@ -53,8 +54,8 @@ gulp.task("minifyScripts", ["concatScripts"], function () {
 
 gulp.task('concatCss', function () {
   gulp.src([
-    './jquery-ui-1.12.1.custom/jquery-ui.css',
-    './jquery-ui-1.12.1.custom/jquery-ui.theme.css',
+    './external/jquery-ui-1.12.1.custom/jquery-ui.css',
+    './external/jquery-ui-1.12.1.custom/jquery-ui.theme.css',
     "./node_modules/bootstrap/dist/css/bootstrap.css",
     "./node_modules/izimodal/css/iziModal.css",
     "./node_modules/font-awesome/css/font-awesome.css",
