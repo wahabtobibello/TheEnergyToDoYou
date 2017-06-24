@@ -135,22 +135,6 @@
     </div>
     <script src="./../node_modules/jquery/dist/jquery.js"></script>
     <script src="./../external/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-    <srcipt src="./../external/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></srcipt>
-    <script>
-        $(document).ready(function () {
-            $("a").on('click', function (event) {
-                if (this.hash !== "") {
-                    event.preventDefault();
-                    var hash = this.hash;
-                    $('html, body').animate({
-                        scrollTop: $(hash).offset().top
-                    }, 700, function () {
-                        window.location.hash = hash;
-                    });
-                }
-            });
-        });
-    </script>
     <script src="./../node_modules/tether/dist/js/tether.js"></script>
     <script src="./../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script src="./../node_modules/fabric/dist/fabric.js"></script>

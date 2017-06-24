@@ -27,7 +27,6 @@ gulp.task("concatScripts", ["compileScripts"], function () {
     .src([
       './node_modules/jquery/dist/jquery.js',
       './external/jquery-ui-1.12.1.custom/jquery-ui.js',
-      './external/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js',
       './node_modules/tether/dist/js/tether.js',
       './node_modules/bootstrap/dist/js/bootstrap.js',
       './node_modules/fabric/dist/fabric.js',
