@@ -152,7 +152,7 @@ body, button {
 
 body > textarea{
     left: 0!important;
-    top:65%!important;
+    top:70%!important;
 }
 
 @media (max-width: 500px) and (min-width: 341px) {
