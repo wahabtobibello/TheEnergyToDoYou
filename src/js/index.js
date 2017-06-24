@@ -66,14 +66,15 @@
       textbox.enterEditing();
       textbox.hiddenTextarea.canvas = canvas;
       textbox.hiddenTextarea.maxLength = maxchars;
+      $(textbox.hiddenTextarea).maxlength({ max: maxchars, showFeedback: false });
       textbox.hiddenTextarea.focus();
       textbox.hiddenTextarea.onkeyup = (e) => {
         let canvas = e.target.canvas;
         let textbox = getObjectWithType(canvas, 'textbox');
         let inputText = textbox.text;
         let textLength = inputText.length;
-        let upperCase = e.key;
-        let charCode = upperCase.charCodeAt(0);
+        let key = e.key || e.keyIdentifier;
+        let lastCharCode = inputText.charCodeAt(textLength - 1);
         if ($moreOptions.css('display') === "none") {
           $addPhotoOnly.show();
           if (e.target.value === "")
@@ -90,9 +91,10 @@
         }
         if (e.key === "Enter") {
           textbox.text = inputText.slice(0, inputText.length - 1);
-          $fileInput.click();
-        } else if (charCode >= 97 && charCode <= 122) {
-          textbox.text = textbox.text.toUpperCase();
+          $choosePhoto.click();
+        }
+        if (lastCharCode >= 97 && lastCharCode <= 122) {
+          e.target.value = textbox.text.toUpperCase();
         }
         if (textLength > 6) {
           editFontSize(canvas, textbox, getAdjustedScale(textLength));
