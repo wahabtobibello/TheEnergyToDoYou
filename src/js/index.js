@@ -71,7 +71,7 @@
       textbox.hiddenTextarea.onkeyup = (e) => {
         let canvas = e.target.canvas;
         let textbox = getObjectWithType(canvas, 'textbox');
-        let inputText = textbox.text;
+        let inputText = e.target.value;
         let textLength = inputText.length;
         let key = e.key || e.keyIdentifier;
         let lastCharCode = inputText.charCodeAt(textLength - 1);
@@ -89,12 +89,14 @@
             $moreOptions.find('button').removeAttr('disabled');
           }
         }
-        if (e.key === "Enter") {
-          textbox.text = inputText.slice(0, inputText.length - 1);
+        if (key === "Enter") {
+          e.target.value = inputText.slice(0, inputText.length - 1);
+          textbox.text = e.target.value;
           $choosePhoto.click();
         }
         if (lastCharCode >= 97 && lastCharCode <= 122) {
-          textbox.text = inputText.toUpperCase();
+          e.target.value = inputText.toUpperCase();
+          textbox.text = e.target.value;
         }
         if (textLength > 6) {
           editFontSize(canvas, textbox, getAdjustedScale(textLength));
