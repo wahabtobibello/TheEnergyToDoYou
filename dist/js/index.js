@@ -46734,7 +46734,6 @@ var share2social = function share2social($, canvas) {
         scaleRatio: 4
       });
       textbox.on('mouseup', function (e) {
-        if (this.inCompostionMode == false) this.inCompostionMode = true;
         this.enterEditing();
       });
       textbox.on('changed', function (e) {
@@ -46757,8 +46756,8 @@ var share2social = function share2social($, canvas) {
       clipArtObj.setTop(423);
       clipArtObj.setLeft(423);
       addClipArt(canvas, clipArtObj, textbox, 4);
-      textbox.enterEditing();
-      canvas.setActiveObject(textbox);
+      // textbox.enterEditing();
+      // canvas.setActiveObject(textbox);
       canvas.renderAll();
     });
   },
@@ -46815,9 +46814,7 @@ var share2social = function share2social($, canvas) {
     }
   };
   fabric.Textbox.prototype.insertNewline = function (_super) {
-    return function () {
-      $choosePhoto.click();
-    };
+    return function () {};
   }(fabric.Textbox.prototype.insertNewline);
   fabric.Textbox.prototype.initHiddenTextarea = function (_super) {
     return function () {
@@ -46825,6 +46822,18 @@ var share2social = function share2social($, canvas) {
       this.hiddenTextarea.maxLength = maxchars;
     };
   }(fabric.Textbox.prototype.initHiddenTextarea);
+  fabric.Textbox.prototype.onCompositionUpdate = function (_super) {
+    return function (e) {
+      this.inCompositionMode = true;
+      _super.call(this, e);
+    };
+  }(fabric.Textbox.prototype.onCompositionUpdate);
+  // fabric.Textbox.prototype.onCompositionEnd = (function (_super) {
+  //   return function () {
+  //     _super.call(this);
+  //     this.exitEditing();
+  //   }
+  // })(fabric.Textbox.prototype.onCompositionEnd);
   startUp(canvas);
   canvas.on('mouse:down', function (e) {
     canvas.forEachObject(function (obj) {

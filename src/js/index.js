@@ -180,8 +180,6 @@
           scaleRatio: 4,
         });
         textbox.on('mouseup', function (e) {
-          if (this.inCompostionMode == false)
-            this.inCompostionMode = true;
           this.enterEditing();
         });
         textbox.on('changed', function (e) {
@@ -192,6 +190,7 @@
             activateButtonOnText($addPhotoOnly, textStr);
           } else {
             activateButtonOnText($moreOptions, textStr);
+            
           }
           if (length > 6) {
             editFontSize(canvas, this, getAdjustedScale(length));
@@ -204,8 +203,8 @@
         clipArtObj.setTop(423);
         clipArtObj.setLeft(423);
         addClipArt(canvas, clipArtObj, textbox, 4);
-        textbox.enterEditing();
-        canvas.setActiveObject(textbox);
+        // textbox.enterEditing();
+        // canvas.setActiveObject(textbox);
         canvas.renderAll();
       });
     },
@@ -261,7 +260,6 @@
     };
   fabric.Textbox.prototype.insertNewline = (function (_super) {
     return function () {
-      $choosePhoto.click();
     }
   })(fabric.Textbox.prototype.insertNewline);
   fabric.Textbox.prototype.initHiddenTextarea = (function (_super) {
@@ -270,6 +268,18 @@
       this.hiddenTextarea.maxLength = maxchars;
     }
   })(fabric.Textbox.prototype.initHiddenTextarea);
+  fabric.Textbox.prototype.onCompositionUpdate = (function (_super) {
+    return function (e) {
+      this.inCompositionMode = true;
+      _super.call(this, e);
+    }
+  })(fabric.Textbox.prototype.onCompositionUpdate);
+  // fabric.Textbox.prototype.onCompositionEnd = (function (_super) {
+  //   return function () {
+  //     _super.call(this);
+  //     this.exitEditing();
+  //   }
+  // })(fabric.Textbox.prototype.onCompositionEnd);
   startUp(canvas);
   canvas.on('mouse:down', (e) => {
     canvas.forEachObject((obj) => {
