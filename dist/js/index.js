@@ -46562,6 +46562,7 @@ var share2social = function share2social($, canvas) {
   var maxchars = 10,
       defaultBlack = "#292b2c",
       lucozadeRed = "#E5003B",
+      acceptedFileTypes = ["image/jpeg", "image/png"],
       $addPhotoOnly = $('#addPhotoOnly'),
       $moreOptions = $('#moreOptions'),
       $saveLink = $('#saveLink'),
@@ -46582,7 +46583,10 @@ var share2social = function share2social($, canvas) {
       $loading = $('#loading span'),
       canvas = new fabric.Canvas('image-canvas', {
     width: 846,
-    height: 846
+    height: 846,
+    selection: false,
+    allowTouchScrolling: true,
+    evented: false
   }),
       renderClipArtAndTextbox = new Promise(function (resolve, reject) {
     fabric.loadSVGFromURL('./img/the-energy-to.svg', function (objects, options) {
@@ -46616,47 +46620,6 @@ var share2social = function share2social($, canvas) {
     if (size > 0) iText.scaleRatio = size;
     iText.scaleToHeight(parent.height / size);
   },
-      initializeTextbox = function initializeTextbox(textbox) {
-    canvas.setActiveObject(textbox);
-    textbox.enterEditing();
-    textbox.hiddenTextarea.canvas = canvas;
-    textbox.hiddenTextarea.maxLength = maxchars;
-    $(textbox.hiddenTextarea).maxlength({ max: maxchars, showFeedback: false });
-    textbox.hiddenTextarea.focus();
-    textbox.hiddenTextarea.onkeyup = function (e) {
-      var canvas = e.target.canvas;
-      var textbox = getObjectWithType(canvas, 'textbox');
-      var inputText = e.target.value;
-      var textLength = inputText.length;
-      var key = e.key || e.keyIdentifier;
-      var lastCharCode = inputText.charCodeAt(textLength - 1);
-      if ($moreOptions.css('display') === "none") {
-        $addPhotoOnly.show();
-        if (e.target.value === "") $addPhotoOnly.find('button').attr('disabled', 'true');else {
-          $addPhotoOnly.find('button').removeAttr('disabled');
-        }
-      } else {
-        if (e.target.value === "") $moreOptions.find('button').attr('disabled', 'true');else {
-          $moreOptions.find('button').removeAttr('disabled');
-        }
-      }
-      if (key === "Enter") {
-        e.target.value = inputText.slice(0, inputText.length - 1);
-        textbox.text = e.target.value;
-        $choosePhoto.click();
-      }
-      if (lastCharCode >= 97 && lastCharCode <= 122) {
-        e.target.value = inputText.toUpperCase();
-        textbox.text = e.target.value;
-      }
-      if (textLength > 6) {
-        editFontSize(canvas, textbox, getAdjustedScale(textLength));
-      } else {
-        editFontSize(canvas, textbox, 4);
-      }
-      canvas.renderAll();
-    };
-  },
       addClipArt = function addClipArt(parent, clipArtObj, iText, textScaleRatio) {
     clipArtObj.scaleToHeight(parent.height);
     clipArtObj.scaleToWidth(parent.width);
@@ -46664,18 +46627,9 @@ var share2social = function share2social($, canvas) {
     parent.add(clipArtObj);
     parent.add(iText);
   },
-      getObjectWithType = function getObjectWithType(canvas, type) {
-    for (var i = 0; i < canvas.size(); i++) {
-      var item = canvas.item(i);
-      if (item.type === type) {
-        return item;
-      }
-    }
-    return null;
-  },
       renderImage = function renderImage(canvas, img) {
-    var clipArtObj = getObjectWithType(canvas, "path-group");
-    var textboxObj = getObjectWithType(canvas, "textbox");
+    var clipArtObj = canvas.getObjects('path-group')[0];
+    var textboxObj = canvas.getObjects('textbox')[0];
     var inputText = textboxObj.getText();
     var scaleRatio = textboxObj.scaleRatio;
     var textObj = new fabric.Text(inputText, {
@@ -46700,6 +46654,9 @@ var share2social = function share2social($, canvas) {
       originY: "center",
       left: canvas.width / 2,
       top: canvas.height / 2
+    });
+    imageObj.on('mouseup', function (e) {
+      rePositionImage(canvas, this);
     });
     var groupObj = new fabric.Group([], {
       hasControls: false,
@@ -46764,20 +46721,45 @@ var share2social = function share2social($, canvas) {
         originX: "center",
         originY: "center",
         cursorColor: "#d80b2c",
-        cursorWidth: 5,
-        evented: true,
+        cursorWidth: 15,
         hasControls: false,
         hasRotatingPoint: false,
         hasBorders: false,
+        lockMovementX: true,
+        lockMovementY: true,
+        width: 188,
         skewY: -10,
         top: 735,
         left: 432,
         scaleRatio: 4
       });
+      textbox.on('mouseup', function (e) {
+        if (this.inCompostionMode == false) this.inCompostionMode = true;
+        this.enterEditing();
+      });
+      textbox.on('changed', function (e) {
+        var textStr = this.getText().toUpperCase();
+        var length = textStr.length;
+        if ($moreOptions.css('display') === "none") {
+          $addPhotoOnly.show();
+          activateButtonOnText($addPhotoOnly, textStr);
+        } else {
+          activateButtonOnText($moreOptions, textStr);
+        }
+        if (length > 6) {
+          editFontSize(canvas, this, getAdjustedScale(length));
+        } else {
+          editFontSize(canvas, this, 4);
+        }
+        this.setText(textStr);
+        canvas.renderAll();
+      });
       clipArtObj.setTop(423);
       clipArtObj.setLeft(423);
       addClipArt(canvas, clipArtObj, textbox, 4);
-      initializeTextbox(textbox);
+      textbox.enterEditing();
+      canvas.setActiveObject(textbox);
+      canvas.renderAll();
     });
   },
       filter = function filter(imageObj, index, prop, value) {
@@ -46826,27 +46808,32 @@ var share2social = function share2social($, canvas) {
       imageObj.setTop(canvasHeight - currentHeight / 2);
     }
     imageObj.setCoords();
+  },
+      activateButtonOnText = function activateButtonOnText($el, text) {
+    if (text === "") $el.find('button').attr('disabled', 'true');else {
+      $el.find('button').removeAttr('disabled');
+    }
   };
+  fabric.Textbox.prototype.insertNewline = function (_super) {
+    return function () {
+      $choosePhoto.click();
+    };
+  }(fabric.Textbox.prototype.insertNewline);
+  fabric.Textbox.prototype.initHiddenTextarea = function (_super) {
+    return function () {
+      _super.call(this);
+      this.hiddenTextarea.maxLength = maxchars;
+    };
+  }(fabric.Textbox.prototype.initHiddenTextarea);
   startUp(canvas);
   canvas.on('mouse:down', function (e) {
-    for (var i = 0; i < canvas.size(); i++) {
-      var item = canvas.item(i);
-      if (item.type !== "image") {
-        canvas.setActiveObject(item);
-        break;
+    canvas.forEachObject(function (obj) {
+      if (obj.type !== "image") {
+        canvas.setActiveObject(obj);
       }
-    }
-    canvas.renderAll();
+    });
   });
-  canvas.on('mouse:up', function (e) {
-    var activeObject = e.target;
-    if (activeObject && activeObject.type === "image") {
-      rePositionImage(canvas, activeObject);
-    } else {
-      initializeTextbox(getObjectWithType(canvas, "textbox"));
-    }
-    canvas.renderAll();
-  });
+
   $(document).ready(function () {
     $("a").on('click', function (event) {
       if (this.hash !== "") {
@@ -46864,8 +46851,18 @@ var share2social = function share2social($, canvas) {
     this.value = "";
   });
   $fileInput.change(function () {
+    $choosePhotoModal.iziModal('close');
+    $loading.css('z-index', '2');
+    $loading.show();
     if (!this.files[0]) {
       console.error("No image selected");
+      $loading.css('z-index', '0');
+      $loading.hide();
+      return;
+    }
+    if (acceptedFileTypes.indexOf(this.files[0].type) < 0) {
+      $loading.css('z-index', '0');
+      $loading.hide();
       return;
     }
     var u = URL.createObjectURL(this.files[0]);
@@ -46879,11 +46876,8 @@ var share2social = function share2social($, canvas) {
         $moreOptions.show();
         $contrastTool.css('color', lucozadeRed).click();
         animateScaleDown(canvas.item(1), 0.6);
-        $choosePhotoModal.iziModal('close');
       });
     };
-    $loading.css('z-index', '2');
-    $loading.show();
   });
   $saveLinkBtn.click(function (e) {
     saveAsCanvas(canvas.getElement());
@@ -46900,14 +46894,16 @@ var share2social = function share2social($, canvas) {
     $('#file-input').click();
   });
   $(document).on("click", "#add-photo", function (e) {
-    renderImage(canvas, $('.selected img')[0]).then(function (done) {
+    $choosePhotoModal.iziModal('close');
+    var img = new Image();
+    img.src = $('.selected img')[0].src;
+    renderImage(canvas, img).then(function (done) {
       $loading.css('z-index', '0');
       $loading.hide();
       $addPhotoOnly.hide();
       $moreOptions.show();
       $contrastTool.css('color', lucozadeRed).click();
       animateScaleDown(canvas.item(1), 0.6);
-      $choosePhotoModal.iziModal('close');
     });
   });
   $shareBtn.click(function (e) {

@@ -13798,7 +13798,7 @@ body, button {
 
 .header {
     width: 100%;
-    height: 100vh;
+    height: 86vh;
     background: radial-gradient(circle at 50% 300%, #f8d60c 80%, transparent 100%), url("../img/water-drops.jpg");
     background-size: auto, cover;
     background-position: top;
@@ -13928,7 +13928,7 @@ body, button {
 
 body > textarea{
     left: 0!important;
-    top:70%!important;
+    top:75%!important;
 }
 
 @media (max-width: 500px) and (min-width: 341px) {
