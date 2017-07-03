@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
-    "fabric": "^1.7.13",
+    "fabric": "^1.7.15",
     "file-saver": "^1.3.3",
     "font-awesome": "^4.7.0",
     "izimodal": "^1.4.2",

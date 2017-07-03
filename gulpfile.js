@@ -29,13 +29,11 @@ gulp.task("concatScripts", ["compileScripts"], function () {
       './external/jquery-ui-1.12.1.custom/jquery-ui.js',
       './node_modules/tether/dist/js/tether.js',
       './node_modules/bootstrap/dist/js/bootstrap.js',
-      './node_modules/fabric/dist/fabric.js',
       './node_modules/izimodal/js/iziModal.js',
       './external/Blob.js',
       './external/canvas-toBlob.js',
       './node_modules/file-saver/FileSaver.js',
-      './external/jquery.plugin.js',
-      './external/jquery.maxlength.js',
+      './node_modules/fabric/dist/fabric.js',
       './dist/js/index.js',
     ])
     .on('error', function (err) { util.log(util.colors.red('[Error]'), err.toString()); })
