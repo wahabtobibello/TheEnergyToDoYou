@@ -173,7 +173,7 @@
           hasBorders: false,
           lockMovementX: true,
           lockMovementY: true,
-          width: 188,
+          width: 600,
           skewY: -10,
           top: 735,
           left: 432,
@@ -258,28 +258,26 @@
         $el.find('button').removeAttr('disabled');
       }
     };
-  fabric.Textbox.prototype.insertNewline = (function (_super) {
-    return function () {
-    }
-  })(fabric.Textbox.prototype.insertNewline);
-  fabric.Textbox.prototype.initHiddenTextarea = (function (_super) {
+ fabric.Textbox.prototype.insertNewline = function (_super) {
+    return function () {};
+  }(fabric.Textbox.prototype.insertNewline);
+  fabric.Textbox.prototype.initHiddenTextarea = function (_super) {
     return function () {
       _super.call(this);
-      this.hiddenTextarea.maxLength = maxchars;
-    }
-  })(fabric.Textbox.prototype.initHiddenTextarea);
-  fabric.Textbox.prototype.onCompositionUpdate = (function (_super) {
+      $(this.hiddenTextarea).attr('maxLength', maxchars);
+      $(this.hiddenTextarea).attr('autocomplete', 'off');
+      $(this.hiddenTextarea).attr('autocorrect', 'off');
+      $(this.hiddenTextarea).attr('spellcheck', false);
+    };
+  }(fabric.Textbox.prototype.initHiddenTextarea);
+  fabric.Textbox.prototype.onInput = function (_super) {
     return function (e) {
-      this.inCompositionMode = true;
+      while (this.text.length > this.hiddenTextarea.value.length) {
+        this.removeChars(e);
+      }
       _super.call(this, e);
-    }
-  })(fabric.Textbox.prototype.onCompositionUpdate);
-  // fabric.Textbox.prototype.onCompositionEnd = (function (_super) {
-  //   return function () {
-  //     _super.call(this);
-  //     this.exitEditing();
-  //   }
-  // })(fabric.Textbox.prototype.onCompositionEnd);
+    };
+  }(fabric.Textbox.prototype.onInput);
   startUp(canvas);
   canvas.on('mouse:down', (e) => {
     canvas.forEachObject((obj) => {
@@ -394,15 +392,15 @@
     $slider.slider('option', 'value', Math.round((canvas.item(0).scaleX / canvas.item(0).newScaleX) * 10) / 10);
   });
   $contrastTool.click((e) => {
-    $slider.slider('option', 'min', -100);
-    $slider.slider('option', 'max', 100);
+    $slider.slider('option', 'min', -250);
+    $slider.slider('option', 'max', 250);
     $slider.slider('option', 'step', 10);
     $slider.slider('option', 'change', contrastToolHandler);
     $slider.slider('option', 'value', filter(canvas.item(0), 0, 'contrast'));
   });
   $brightnessTool.click((e) => {
-    $slider.slider('option', 'min', -100);
-    $slider.slider('option', 'max', 100);
+    $slider.slider('option', 'min', -250);
+    $slider.slider('option', 'max', 250);
     $slider.slider('option', 'step', 10);
     $slider.slider('option', 'change', brightnessToolHandler);
     $slider.slider('option', 'value', filter(canvas.item(0), 1, 'brightness'));
