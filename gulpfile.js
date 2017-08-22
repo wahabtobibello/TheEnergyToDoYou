@@ -3,7 +3,7 @@
 const gulp = require('gulp'),
   concat = require('gulp-concat'),
   uglify = require('gulp-uglify'),
-  minify = require('gulp-minify-css'),
+  minify = require('gulp-clean-css'),
   rename = require('gulp-rename'),
   maps = require('gulp-sourcemaps'),
   util = require('gulp-util'),
