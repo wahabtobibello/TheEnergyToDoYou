@@ -1,6 +1,7 @@
 (function (fabric, $) {
   'use strict';
   const maxchars = 10,
+    placeholderText = "*TYPE HERE*",
     defaultBlack = "#292b2c",
     lucozadeRed = "#E5003B",
     acceptedFileTypes = ["image/jpeg", "image/png"],
@@ -65,7 +66,10 @@
         iText.scaleRatio = size;
       iText.scaleToHeight(parent.height / size);
     },
-    addClipArt = (parent, clipArtObj, iText, textScaleRatio) => {
+    addClipArt = (parent, clipArtObj, iText, textScaleRatio, placeholderObj) => {
+      if (placeholderObj) {
+        parent.add(placeholderObj);
+      }
       clipArtObj.scaleToHeight(parent.height);
       clipArtObj.scaleToWidth(parent.width);
       editFontSize(parent, iText, textScaleRatio);
@@ -179,6 +183,23 @@
           left: 432,
           scaleRatio: 4,
         });
+        let placeholderObj = new fabric.Text(placeholderText, {
+          left: 432,
+          top: 735,
+          fontFamily: "AvenyT-Black",
+          fontSize: 110,
+          opacity: 0.5,
+          textAlign: "center",
+          fill: "#d80b2c",
+          originX: "center",
+          originY: "center",
+          evented: false,
+          hasControls: false,
+          hasRotatingPoint: false,
+          hasBorders: false,
+          skewY: -10,
+        });
+        textbox.placeholderObj = placeholderObj;
         textbox.on('mouseup', function (e) {
           this.enterEditing();
         });
@@ -190,19 +211,24 @@
             activateButtonOnText($addPhotoOnly, textStr);
           } else {
             activateButtonOnText($moreOptions, textStr);
-            
+
           }
           if (length > 6) {
             editFontSize(canvas, this, getAdjustedScale(length));
           } else {
             editFontSize(canvas, this, 4);
           }
+          if (textStr !== "") {
+            this.placeholderObj._set("opacity", 0);
+          }else{
+            this.placeholderObj._set("opacity", 0.5);
+          }
           this.setText(textStr);
           canvas.renderAll();
         });
         clipArtObj.setTop(423);
         clipArtObj.setLeft(423);
-        addClipArt(canvas, clipArtObj, textbox, 4);
+        addClipArt(canvas, clipArtObj, textbox, 4, placeholderObj);
         // textbox.enterEditing();
         // canvas.setActiveObject(textbox);
         canvas.renderAll();
@@ -258,8 +284,8 @@
         $el.find('button').removeAttr('disabled');
       }
     };
- fabric.Textbox.prototype.insertNewline = function (_super) {
-    return function () {};
+  fabric.Textbox.prototype.insertNewline = function (_super) {
+    return function () { };
   }(fabric.Textbox.prototype.insertNewline);
   fabric.Textbox.prototype.initHiddenTextarea = function (_super) {
     return function () {
