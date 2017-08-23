@@ -291,6 +291,7 @@
     return function () {
       _super.call(this);
       $(this.hiddenTextarea).attr('maxLength', maxchars);
+      $(this.hiddenTextarea).attr('name', 'password');
     };
   }(fabric.Textbox.prototype.initHiddenTextarea);
   fabric.Textbox.prototype.onInput = function (_super) {
