@@ -1139,9 +1139,9 @@ extsprintf@1.3.0, extsprintf@^1.2.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.3.0.tgz#96918440e3041a7a414f8c52e3c574eb3c3e1e05"
 
-fabric@^1.7.15:
-  version "1.7.17"
-  resolved "https://registry.yarnpkg.com/fabric/-/fabric-1.7.17.tgz#389dc980b96ed999f526ec800f6dc51de51745e2"
+fabric@1.7.4:
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/fabric/-/fabric-1.7.4.tgz#0977bb01530fc6bce472703eb9a8516c81c4bd95"
   optionalDependencies:
     canvas "1.6.x"
     jsdom "3.x.x"
