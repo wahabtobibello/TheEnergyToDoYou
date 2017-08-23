@@ -291,9 +291,6 @@
     return function () {
       _super.call(this);
       $(this.hiddenTextarea).attr('maxLength', maxchars);
-      $(this.hiddenTextarea).attr('autocomplete', 'off');
-      $(this.hiddenTextarea).attr('autocorrect', 'off');
-      $(this.hiddenTextarea).attr('spellcheck', false);
     };
   }(fabric.Textbox.prototype.initHiddenTextarea);
   fabric.Textbox.prototype.onInput = function (_super) {
