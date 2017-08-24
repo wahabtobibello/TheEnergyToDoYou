@@ -6,4 +6,4 @@
 
 Click [here][1] to go to production server
 
-[1]: https://tobibello.github.io/lucozade-energy-to-do/dist
+[1]: https://tobibello.github.io/TheEnergyToDoYou/dist
