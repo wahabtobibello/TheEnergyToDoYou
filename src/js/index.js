@@ -291,6 +291,9 @@
     return function () {
       _super.call(this);
       $(this.hiddenTextarea).attr('maxLength', maxchars);
+      $(this.hiddenTextarea).attr('autocomplete', "password");
+      $(this.hiddenTextarea).attr('autocorrect', "password");
+      $(this.hiddenTextarea).attr('spellcheck', false);
       $(this.hiddenTextarea).attr('name', 'password');
     };
   }(fabric.Textbox.prototype.initHiddenTextarea);
@@ -300,8 +303,27 @@
         this.removeChars(e);
       }
       _super.call(this, e);
+      console.log("onInput", this.text);
     };
   }(fabric.Textbox.prototype.onInput);
+  fabric.Textbox.prototype.onCompositionStart = function (_super) {
+    return function (e) {
+      _super.call(this, e);
+      console.log("onCompositionStart", this.text);
+    };
+  }(fabric.Textbox.prototype.onCompositionStart);
+  fabric.Textbox.prototype.onCompositionUpdate = function (_super) {
+    return function (e) {
+      _super.call(this, e);
+      console.log("onCompositionUpdate", this.text);
+    };
+  }(fabric.Textbox.prototype.onCompositionUpdate);
+  fabric.Textbox.prototype.onCompositionEnd = function (_super) {
+    return function (e) {
+      _super.call(this, e);
+      console.log("onCompositionEnd", this.text);
+    };
+  }(fabric.Textbox.prototype.onCompositionEnd);
   startUp(canvas);
   canvas.on('mouse:down', (e) => {
     canvas.forEachObject((obj) => {
