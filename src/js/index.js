@@ -291,10 +291,9 @@
     return function () {
       _super.call(this);
       $(this.hiddenTextarea).attr('maxLength', maxchars);
-      $(this.hiddenTextarea).attr('autocomplete', "password");
-      $(this.hiddenTextarea).attr('autocorrect', "password");
+      $(this.hiddenTextarea).attr('autocomplete', 'off');
+      $(this.hiddenTextarea).attr('autocorrect', 'off');
       $(this.hiddenTextarea).attr('spellcheck', false);
-      $(this.hiddenTextarea).attr('name', 'password');
     };
   }(fabric.Textbox.prototype.initHiddenTextarea);
   fabric.Textbox.prototype.onInput = function (_super) {
@@ -303,27 +302,8 @@
         this.removeChars(e);
       }
       _super.call(this, e);
-      console.log("onInput", this.text);
     };
   }(fabric.Textbox.prototype.onInput);
-  fabric.Textbox.prototype.onCompositionStart = function (_super) {
-    return function (e) {
-      _super.call(this, e);
-      console.log("onCompositionStart", this.text);
-    };
-  }(fabric.Textbox.prototype.onCompositionStart);
-  fabric.Textbox.prototype.onCompositionUpdate = function (_super) {
-    return function (e) {
-      _super.call(this, e);
-      console.log("onCompositionUpdate", this.text);
-    };
-  }(fabric.Textbox.prototype.onCompositionUpdate);
-  fabric.Textbox.prototype.onCompositionEnd = function (_super) {
-    return function (e) {
-      _super.call(this, e);
-      console.log("onCompositionEnd", this.text);
-    };
-  }(fabric.Textbox.prototype.onCompositionEnd);
   startUp(canvas);
   canvas.on('mouse:down', (e) => {
     canvas.forEachObject((obj) => {
@@ -345,17 +325,6 @@
         });
       }
     });
-    if (/iPhone/.test(navigator.userAgent) && !window.MSStream) {
-      $(document).on("focus", "input, textarea, select", function () {
-        $('meta[name=viewport]').remove();
-        $('head').append('<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">');
-      });
-
-      $(document).on("blur", "input, textarea, select", function () {
-        $('meta[name=viewport]').remove();
-        $('head').append('<meta name="viewport" content="width=device-width, initial-scale=1">');
-      });
-    }
   });
   $fileInput.click(function () {
     this.value = "";
